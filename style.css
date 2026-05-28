@@ -459,6 +459,7 @@ input, textarea, select, button {
   display: flex;
   align-items: center;
   padding-top: 100px;
+  padding-bottom: 120px;
   overflow: hidden;
   background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
 }
@@ -579,10 +580,16 @@ input, textarea, select, button {
 }
 
 .cta-btn.btn-tertiary {
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
   color: var(--text-secondary);
 }
 .cta-btn.btn-tertiary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-gold);
   color: var(--accent-gold);
+  transform: translateY(-2px);
 }
 
 /* Visual Column - Profile Frame inside Liquid Nebula Glass Bubble */
@@ -710,6 +717,13 @@ input, textarea, select, button {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+/* Hide desktop scroll indicator on mobile/tablet or short viewports to prevent overlapping */
+@media (max-width: 1024px), (max-height: 800px) {
+  .scroll-indicator {
+    display: none !important;
+  }
 }
 
 .scroll-text {
@@ -1189,6 +1203,13 @@ section {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  will-change: transform;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0,0,0) rotate(0deg);
 }
 
 .cd-spinning-element::before {
@@ -1301,10 +1322,33 @@ section {
   transform: scale(1.15);
 }
 
-@media (max-width: 1199px) { .music-showcase-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 767px) {
   .music-showcase-grid { grid-template-columns: 1fr; }
-  .music-card-item:hover .cd-spinning-element { right: 0px; }
+  
+  /* Prevent showcase CD cropping on mobile/tablet screens by allowing overflow */
+  .music-card-item {
+    overflow: visible !important;
+  }
+  
+  /* Make showcase CDs persistently visible and spin on mobile viewports */
+  .cd-spinning-element {
+    right: -20% !important;
+    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0) rotate(0deg);
+    transform: translate3d(0,0,0) rotate(0deg);
+    -webkit-animation: spin 10s linear infinite !important;
+    animation: spin 10s linear infinite !important;
+  }
+  
+  /* Prevent hover state from overriding persistent slide-out on tap */
+  .music-card-item:hover .cd-spinning-element {
+    right: -20% !important;
+  }
 }
 
 /* --- 12. SPOTIFY GREEN SHADOW INTEGRATION --- */
@@ -2207,6 +2251,26 @@ section {
 @media (max-width: 991px) {
   .footer-container { grid-template-columns: 1fr; gap: 40px; }
   .footer-col-title { margin-bottom: 16px; }
+  
+  /* Stacking Space-Between Section Headers (Fixes showcase cropping on tablet) */
+  .section-header.space-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .showcase-filters {
+    width: 100%;
+    padding-left: 2px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Hide standard scrollbars on mobile/tablet filter bar for clean look */
+  .showcase-filters::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* --- 18. ROBUST MOBILE SCREEN RESPONSIVENESS OVERRIDES --- */
@@ -2226,7 +2290,7 @@ section {
   .hero-slogan {
     font-size: 0.95rem !important;
     line-height: 1.7;
-    margin-bottom: 30px;
+    margin-bottom: 24px !important;
     padding-top: 10px;
   }
 
@@ -2234,11 +2298,14 @@ section {
     flex-direction: column;
     width: 100%;
     align-items: stretch;
+    gap: 10px !important;
   }
 
   .cta-btn {
     width: 100%;
   }
+
+  /* Scroll indicator hiding is handled by the general max-width: 1024px / max-height: 800px query */
 
   /* Profile Frame scale */
   .profile-glow-ring {
@@ -2264,25 +2331,7 @@ section {
     font-size: 2.0rem !important;
   }
 
-  /* Stacking Space-Between Section Headers (Fixes showcase cropping) */
-  .section-header.space-between {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .showcase-filters {
-    width: 100%;
-    padding-left: 2px;
-    padding-bottom: 12px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Hide standard scrollbars on mobile filter bar for clean look */
-  .showcase-filters::-webkit-scrollbar {
-    display: none;
-  }
+  /* Section headers and filter scrolling are inherited from the max-width: 991px block */
 
   /* Biography details */
   .bio-headline {
@@ -2316,3 +2365,345 @@ section {
     top: 30px;
   }
 }
+
+/* --- 19. UPCOMING TEASER SECTION WITH GLITCH COUNTER --- */
+.teaser-section {
+  background: var(--bg-main);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.teaser-canvas-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.teaser-card {
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.teaser-glow-accent {
+  position: absolute;
+  top: -30%; right: -30%; width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(225, 48, 108, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.teaser-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.teaser-meta {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25rem;
+  color: var(--accent-gold);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.teaser-song-title {
+  font-family: var(--font-accent);
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--text-primary) 30%, #e1306c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.teaser-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.release-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 35px;
+}
+
+.countdown-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.countdown-item {
+  width: 90px;
+  padding: 16px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.countdown-item:hover {
+  transform: translateY(-4px);
+  border-color: #e1306c;
+  box-shadow: 0 0 15px rgba(225, 48, 108, 0.15);
+}
+
+.countdown-num {
+  font-family: var(--font-accent);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.countdown-label {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.teaser-visual-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.teaser-frame-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+}
+
+.teaser-neon-ring {
+  position: absolute;
+  width: 104%; height: 104%;
+  top: -2%; left: -2%;
+  border-radius: 12px;
+  border: 1px solid rgba(225, 48, 108, 0.25);
+  box-shadow: 0 0 35px rgba(225, 48, 108, 0.15);
+  animation: floatRing 6s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.teaser-album-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: visible;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.teaser-cover-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  position: relative;
+  z-index: 4;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.55);
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+}
+
+.teaser-cd-element {
+  position: absolute;
+  top: 2.5%; right: -25%; width: 95%; height: 95%; /* Slid out by default so it is always visible! */
+  border-radius: 50%;
+  background: #111;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.85);
+  transition: right var(--transition-slow) var(--ease-smooth);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0,0,0) rotate(0deg);
+  
+  /* Constant slow ambient rotation */
+  -webkit-animation: spin 25s linear infinite;
+  animation: spin 25s linear infinite;
+}
+
+.teaser-cd-element::before {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #202020, #111 2px, #202020 4px);
+  opacity: 0.95;
+}
+
+.teaser-cd-label {
+  width: 38%;
+  height: 38%;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 3;
+}
+
+.teaser-cd-center-hole {
+  position: absolute;
+  width: 10%; height: 10%;
+  background: var(--bg-main);
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: inset 0 0 5px #000;
+}
+
+/* Hover transitions */
+.teaser-album-wrapper:hover .teaser-cd-element {
+  right: -35%; /* Slides out further on hover! */
+  /* Fast rotation on hover to simulate active playing */
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+.teaser-album-wrapper:hover .teaser-cover-art {
+  transform: scale(0.97);
+}
+
+@-webkit-keyframes floatRing {
+  0% { -webkit-transform: translateY(0px) rotate(0deg); transform: translateY(0px) rotate(0deg); border-color: rgba(225, 48, 108, 0.2); }
+  100% { -webkit-transform: translateY(-8px) rotate(0.5deg); transform: translateY(-8px) rotate(0.5deg); border-color: rgba(255, 215, 0, 0.25); }
+}
+@keyframes floatRing {
+  0% { -webkit-transform: translateY(0px) rotate(0deg); transform: translateY(0px) rotate(0deg); border-color: rgba(225, 48, 108, 0.2); }
+  100% { -webkit-transform: translateY(-8px) rotate(0.5deg); transform: translateY(-8px) rotate(0.5deg); border-color: rgba(255, 215, 0, 0.25); }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: translate3d(0,0,0) rotate(0deg); transform: translate3d(0,0,0) rotate(0deg); }
+  100% { -webkit-transform: translate3d(0,0,0) rotate(360deg); transform: translate3d(0,0,0) rotate(360deg); }
+}
+@keyframes spin {
+  0% { -webkit-transform: translate3d(0,0,0) rotate(0deg); transform: translate3d(0,0,0) rotate(0deg); }
+  100% { -webkit-transform: translate3d(0,0,0) rotate(360deg); transform: translate3d(0,0,0) rotate(360deg); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulseSlow {
+  0% { opacity: 0.85; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.02); }
+}
+
+@media (max-width: 991px) {
+  .teaser-section {
+    padding: 70px 0;
+  }
+  .teaser-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+  .teaser-visual-col {
+    order: -1;
+  }
+  .release-date-badge {
+    justify-content: center;
+  }
+  .countdown-container {
+    justify-content: center;
+  }
+  .teaser-cta-group {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Prevent CD cropping on mobile/tablet screens by allowing overflow */
+  .teaser-card {
+    overflow: visible !important;
+  }
+  .teaser-frame-wrapper {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  .teaser-cd-element {
+    right: -18%;
+    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0) rotate(0deg);
+    transform: translate3d(0,0,0) rotate(0deg);
+    -webkit-animation: spin 12s linear infinite;
+    animation: spin 12s linear infinite;
+  }
+  .teaser-album-wrapper:hover .teaser-cd-element {
+    right: -26%;
+  }
+}
+
+@media (max-width: 575px) {
+  .countdown-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 260px;
+    margin: 0 auto 30px;
+  }
+  .countdown-item {
+    width: 100%;
+  }
+  .teaser-song-title {
+    font-size: 2.8rem !important;
+  }
+  .teaser-card {
+    padding: 35px 20px;
+    overflow: visible !important; /* Ensure no cropping on extra narrow screens */
+  }
+  
+  /* Persistent CD sliding and spinning loop on mobile phones (no hover required) */
+  .teaser-cd-element {
+    right: -24% !important;
+    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0) rotate(0deg);
+    transform: translate3d(0,0,0) rotate(0deg);
+    -webkit-animation: spin 8s linear infinite !important;
+    animation: spin 8s linear infinite !important;
+  }
+}
+

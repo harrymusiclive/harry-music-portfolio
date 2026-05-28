@@ -28,7 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=1.1.6">
   
   <!-- FontAwesome for fallback simple UI elements -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -321,6 +321,116 @@
           <div class="genre-pill glass-card" style="--accent: #ffffff;">
             <div class="genre-pill-dot"></div>
             <span class="genre-pill-name">Cinematic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Release Teaser Section -->
+  <section class="teaser-section" id="upcoming-release">
+    <canvas id="teaserCanvas" class="teaser-canvas-bg"></canvas>
+    <div class="section-container">
+      <div class="section-header center">
+        <span class="section-tag golden-accent animate-pulse-slow">NEXT FREQUENCY</span>
+        <h2 class="section-title">Upcoming Worldwide Release</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="teaser-card glass-card">
+        <div class="teaser-glow-accent"></div>
+        <div class="teaser-grid">
+          <div class="teaser-text-col">
+            <span class="teaser-meta">SAAHIL NAWAZ & HARRY MUSIC</span>
+            <h3 class="teaser-song-title animate-glow">Broken</h3>
+            
+            <p class="teaser-desc">
+              Written and composed by Saahil Nawaz, with music produced by Harry Music. An atmospheric, heartbroken R&B and Pop record delivering a deep, sad vibe. Built on delicate acoustic guitar lines and emotional piano keys, it captures the sound of a shattered heart healing.
+            </p>
+
+            <div class="release-date-badge">
+              <span class="release-icon">📅</span>
+              <span class="release-text">Releasing June 5, 2026 Worldwide</span>
+            </div>
+
+            <!-- Interactive Countdown Timer -->
+            <div class="countdown-container" id="countdownTimer">
+              <div class="countdown-item glass-card">
+                <span class="countdown-num" id="days">00</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-item glass-card">
+                <span class="countdown-num" id="hours">00</span>
+                <span class="countdown-label">Hrs</span>
+              </div>
+              <div class="countdown-item glass-card">
+                <span class="countdown-num" id="minutes">00</span>
+                <span class="countdown-label">Min</span>
+              </div>
+              <div class="countdown-item glass-card">
+                <span class="countdown-num" id="seconds">00</span>
+                <span class="countdown-label">Sec</span>
+              </div>
+            </div>
+
+            <script>
+              (function() {
+                const target = 1780597800000; // June 5, 2026 00:00:00 GMT+05:30
+                function update() {
+                  const now = new Date().getTime();
+                  const distance = target - now;
+                  
+                  const dEl = document.getElementById('days');
+                  const hEl = document.getElementById('hours');
+                  const mEl = document.getElementById('minutes');
+                  const sEl = document.getElementById('seconds');
+                  
+                  if (!dEl || !hEl || !mEl || !sEl) return;
+                  
+                  if (distance < 0) {
+                    dEl.innerText = "00";
+                    hEl.innerText = "00";
+                    mEl.innerText = "00";
+                    sEl.innerText = "00";
+                    const tText = document.querySelector('.release-date-badge .release-text');
+                    if (tText) tText.innerText = "STREAMING WORLDWIDE NOW";
+                  } else {
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    dEl.innerText = days < 10 ? '0' + days : days;
+                    hEl.innerText = hours < 10 ? '0' + hours : hours;
+                    mEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+                    sEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+                  }
+                }
+                update();
+                setInterval(update, 1000);
+              })();
+            </script>
+
+            <div class="teaser-cta-group">
+              <button class="cta-btn btn-primary animate-pulse-slow" id="preSaveBtn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
+                <span>Pre-Save on Spotify</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="teaser-visual-col">
+            <div class="teaser-frame-wrapper">
+              <div class="teaser-neon-ring"></div>
+              <div class="teaser-album-wrapper" id="teaserAlbumCard">
+                <img src="./assets/broken_art.jpg" alt="Broken Album Art" class="teaser-cover-art">
+                <!-- Spinning CD Element sliding out on hover -->
+                <div class="teaser-cd-element">
+                  <img src="./assets/broken_art.jpg" alt="Broken CD Label" class="teaser-cd-label">
+                  <div class="teaser-cd-center-hole"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -934,7 +1044,7 @@
         <h4 class="footer-col-title">NAVIGATION</h4>
         <ul class="footer-links">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Studio</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#beat-store">Buy My Beats</a></li>
           <li><a href="#showcase">Music Vault</a></li>
           <li><a href="#services">Collab Menu</a></li>
@@ -968,6 +1078,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
   <!-- Main Application Logic Script -->
-  <script src="./main.js"></script>
+  <script src="./main.js?v=1.1.6"></script>
 </body>
 </html>

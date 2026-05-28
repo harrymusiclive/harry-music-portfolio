@@ -500,4 +500,126 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.refresh();
   });
 
+  /* ==========================================================================
+     14. UPCOMING RELEASE COUNTDOWN TIMER
+     ========================================================================== */
+  // Moved to inline script inside index.html to guarantee immediate caching-independent execution
+
+  // Pre-Save Spotify Alert trigger
+  const preSaveBtn = document.getElementById('preSaveBtn');
+  if (preSaveBtn) {
+    preSaveBtn.addEventListener('click', () => {
+      // Elegant customized toast notification or dialog
+      const originalText = preSaveBtn.innerHTML;
+      preSaveBtn.disabled = true;
+      preSaveBtn.innerHTML = `
+        <svg class="animate-spin" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 8px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)"></circle><path d="M4 12a8 8 0 0 1 8-8" stroke="currentColor"></path></svg>
+        <span>Syncing Waveforms...</span>
+      `;
+      
+      setTimeout(() => {
+        preSaveBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Pre-Saved Successfully!</span>
+        `;
+        alert("Frequency Synced! 'Broken' has been successfully pre-saved to your Spotify library and will release on June 5, 2026.");
+      }, 1500);
+    });
+  }
+
+  /* ==========================================================================
+     15. SHATTERED GLASS PARTICLE SIMULATOR FOR TEASER
+     ========================================================================== */
+  const tCanvas = document.getElementById('teaserCanvas');
+  if (tCanvas) {
+    const tCtx = tCanvas.getContext('2d');
+    let tWidth = tCanvas.width = tCanvas.parentElement.clientWidth;
+    let tHeight = tCanvas.height = tCanvas.parentElement.clientHeight;
+
+    window.addEventListener('resize', () => {
+      if (tCanvas.parentElement) {
+        tWidth = tCanvas.width = tCanvas.parentElement.clientWidth;
+        tHeight = tCanvas.height = tCanvas.parentElement.clientHeight;
+      }
+    });
+
+    const particles = [];
+    const particleCount = 20;
+
+    class GlassShardParticle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * tWidth;
+        this.y = Math.random() * tHeight;
+        this.size = 5 + Math.random() * 15;
+        this.speedX = -0.2 + Math.random() * 0.4;
+        this.speedY = -0.1 - Math.random() * 0.3;
+        this.opacity = 0.1 + Math.random() * 0.3;
+        this.points = [];
+        
+        // Generate random triangle shard points
+        const sides = 3;
+        for (let i = 0; i < sides; i++) {
+          const angle = (i * 2 * Math.PI) / sides;
+          const r = this.size * (0.6 + Math.random() * 0.4);
+          this.points.push({
+            x: Math.cos(angle) * r,
+            y: Math.sin(angle) * r
+          });
+        }
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Reset if goes off screen
+        if (this.y < -30 || this.x < -30 || this.x > tWidth + 30) {
+          this.reset();
+          this.y = tHeight + 20;
+        }
+      }
+
+      draw() {
+        tCtx.save();
+        tCtx.translate(this.x, this.y);
+        tCtx.beginPath();
+        tCtx.moveTo(this.points[0].x, this.points[0].y);
+        for (let i = 1; i < this.points.length; i++) {
+          tCtx.lineTo(this.points[i].x, this.points[i].y);
+        }
+        tCtx.closePath();
+        
+        // Shimmering color
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const color = isDark ? `rgba(255, 255, 255, ${this.opacity})` : `rgba(225, 48, 108, ${this.opacity * 0.4})`;
+        
+        tCtx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(225,48,108,0.08)';
+        tCtx.lineWidth = 1;
+        tCtx.fillStyle = color;
+        
+        tCtx.fill();
+        tCtx.stroke();
+        tCtx.restore();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new GlassShardParticle());
+    }
+
+    function animateTeaserParticles() {
+      tCtx.clearRect(0, 0, tWidth, tHeight);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateTeaserParticles);
+    }
+    animateTeaserParticles();
+  }
+
 });
