@@ -2208,3 +2208,111 @@ section {
   .footer-container { grid-template-columns: 1fr; gap: 40px; }
   .footer-col-title { margin-bottom: 16px; }
 }
+
+/* --- 18. ROBUST MOBILE SCREEN RESPONSIVENESS OVERRIDES --- */
+@media (max-width: 767px) {
+  /* Hero Section Typography */
+  .hero-title {
+    font-size: 2.8rem !important;
+    line-height: 1.15;
+    margin-bottom: 15px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem !important;
+    margin-bottom: 20px;
+  }
+  
+  .hero-slogan {
+    font-size: 0.95rem !important;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    padding-top: 10px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
+
+  /* Profile Frame scale */
+  .profile-glow-ring {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .profile-img-container {
+    width: 210px;
+    height: 210px;
+  }
+
+  /* General Section Layouts */
+  section {
+    padding: 70px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 2.0rem !important;
+  }
+
+  /* Stacking Space-Between Section Headers (Fixes showcase cropping) */
+  .section-header.space-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .showcase-filters {
+    width: 100%;
+    padding-left: 2px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Hide standard scrollbars on mobile filter bar for clean look */
+  .showcase-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Biography details */
+  .bio-headline {
+    font-size: 1.85rem !important;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+
+  .bio-badge-row {
+    margin-bottom: 20px;
+  }
+
+  .bio-badge {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .about-bio-text {
+    font-size: 0.98rem !important;
+    line-height: 1.8;
+  }
+
+  /* Testimonials quotation */
+  .testimonial-quote {
+    font-size: 1.02rem !important;
+    line-height: 1.75;
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    top: 30px;
+  }
+}
