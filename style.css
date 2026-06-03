@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HARRY MUSIC PORTFOLIO REDESIGN - CYBER-GLOW MINIMALIST LUXURY
+   HARRY MUSIC PORTFOLIO — EDITORIAL LUXURY REDESIGN
    ========================================================================== */
 
 /* --- 1. REFINED THEME CONFIGURATION --- */
@@ -15,56 +15,86 @@
   --bg-elevated: rgba(13, 13, 16, 0.65);
   --bg-preloader: hsl(240, 14%, 1%);
   
-  --text-primary: hsl(0, 0%, 98%);
-  --text-secondary: hsl(0, 0%, 72%);
-  --text-muted: hsl(0, 0%, 50%);
+  --text-primary: hsl(45, 20%, 96%);
+  --text-secondary: hsl(220, 8%, 68%);
+  --text-muted: hsl(220, 6%, 45%);
   
-  --accent-gold: hsl(43, 100%, 60%);
-  --accent-gold-gradient: linear-gradient(135deg, hsl(43, 100%, 65%) 0%, hsl(43, 80%, 42%) 100%);
-  --accent-gold-glow: rgba(255, 215, 0, 0.35);
-  --accent-gold-rgb: 255, 215, 0;
+  /* Refined warm gold */
+  --accent-gold: hsl(38, 95%, 58%);
+  --accent-gold-gradient: linear-gradient(135deg, hsl(42, 100%, 68%) 0%, hsl(36, 90%, 44%) 100%);
+  --accent-gold-glow: rgba(240, 185, 60, 0.3);
+  --accent-gold-rgb: 240, 185, 60;
   
-  --accent-neon: hsl(275, 95%, 60%);
-  --accent-neon-gradient: linear-gradient(135deg, hsl(275, 95%, 65%) 0%, hsl(285, 90%, 45%) 100%);
-  --accent-neon-glow: rgba(200, 80, 255, 0.25);
-  --accent-neon-rgb: 200, 80, 255;
+  /* Sophisticated electric violet */
+  --accent-neon: hsl(258, 90%, 65%);
+  --accent-neon-gradient: linear-gradient(135deg, hsl(258, 90%, 70%) 0%, hsl(270, 85%, 50%) 100%);
+  --accent-neon-glow: rgba(155, 90, 255, 0.22);
+  --accent-neon-rgb: 155, 90, 255;
   
-  --glass-border: rgba(255, 255, 255, 0.07);
-  --glass-highlight: rgba(255, 255, 255, 0.02);
-  --card-shadow: rgba(0, 0, 0, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-highlight: rgba(255, 255, 255, 0.025);
+  --card-shadow: rgba(0, 0, 0, 0.75);
+  
+  /* Navbar styling variables */
+  --navbar-bg: rgba(10, 10, 13, 0.45);
+  --navbar-bg-scrolled: rgba(10, 10, 13, 0.88);
+  --navbar-shadow: rgba(0, 0, 0, 0.35);
 
   /* Butter-Smooth Easing & Transitions */
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.25s var(--ease-smooth);
-  --transition-medium: 0.5s var(--ease-smooth);
-  --transition-slow: 0.9s var(--ease-smooth);
+  --transition-fast: 0.22s var(--ease-smooth);
+  --transition-medium: 0.48s var(--ease-smooth);
+  --transition-slow: 0.85s var(--ease-smooth);
+
+  /* Typography Scale */
+  --text-xs: 0.72rem;
+  --text-sm: 0.85rem;
+  --text-base: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.4rem;
+  --text-4xl: 3.2rem;
+  --text-5xl: 4.8rem;
+  --text-hero: clamp(3.6rem, 8vw, 6.5rem);
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 36px;
+  --radius-full: 9999px;
 }
 
 /* Light Theme Variables Override */
 [data-theme="light"] {
-  --bg-main: hsl(0, 0%, 97%);
-  --bg-secondary: hsl(0, 0%, 93%);
-  --bg-elevated: rgba(255, 255, 255, 0.75);
-  --bg-preloader: hsl(0, 0%, 98%);
+  --bg-main: hsl(40, 20%, 97%);
+  --bg-secondary: hsl(40, 15%, 93%);
+  --bg-elevated: rgba(255, 252, 245, 0.82);
+  --bg-preloader: hsl(40, 20%, 98%);
   
-  --text-primary: hsl(0, 0%, 10%);
-  --text-secondary: hsl(0, 0%, 35%);
-  --text-muted: hsl(0, 0%, 52%);
+  --text-primary: hsl(220, 20%, 10%);
+  --text-secondary: hsl(220, 10%, 36%);
+  --text-muted: hsl(220, 6%, 54%);
   
-  --accent-gold: hsl(43, 85%, 45%);
-  --accent-gold-gradient: linear-gradient(135deg, hsl(43, 90%, 52%) 0%, hsl(43, 80%, 38%) 100%);
-  --accent-gold-glow: rgba(197, 160, 89, 0.25);
-  --accent-gold-rgb: 197, 160, 89;
+  --accent-gold: hsl(36, 88%, 42%);
+  --accent-gold-gradient: linear-gradient(135deg, hsl(40, 92%, 50%) 0%, hsl(34, 82%, 36%) 100%);
+  --accent-gold-glow: rgba(195, 148, 60, 0.22);
+  --accent-gold-rgb: 195, 148, 60;
   
-  --accent-neon: hsl(220, 100%, 48%);
-  --accent-neon-gradient: linear-gradient(135deg, hsl(220, 100%, 55%) 0%, hsl(225, 95%, 42%) 100%);
-  --accent-neon-glow: rgba(0, 122, 255, 0.18);
-  --accent-neon-rgb: 0, 122, 255;
+  --accent-neon: hsl(258, 80%, 50%);
+  --accent-neon-gradient: linear-gradient(135deg, hsl(258, 80%, 58%) 0%, hsl(265, 76%, 44%) 100%);
+  --accent-neon-glow: rgba(120, 70, 220, 0.18);
+  --accent-neon-rgb: 120, 70, 220;
   
-  --glass-border: rgba(0, 0, 0, 0.05);
-  --glass-highlight: rgba(255, 255, 255, 0.5);
-  --card-shadow: rgba(0, 0, 0, 0.06);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-highlight: rgba(255, 255, 255, 0.6);
+  --card-shadow: rgba(0, 0, 0, 0.07);
+  
+  --navbar-bg: rgba(255, 252, 245, 0.45);
+  --navbar-bg-scrolled: rgba(255, 252, 245, 0.88);
+  --navbar-shadow: rgba(0, 0, 0, 0.08);
 }
 
 /* Fix X Twitter Profile hover visibility in light mode and default to white in dark mode */
@@ -129,7 +159,7 @@ input, textarea, select, button {
   background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
+  background: var(--text-muted);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -294,9 +324,7 @@ input, textarea, select, button {
   height: 70px;
   z-index: 1000;
   border-radius: 40px;
-  background: rgba(var(--bg-main) == hsl(240, 14%, 2%) ? 10 : 255, 
-                   var(--bg-main) == hsl(240, 14%, 2%) ? 10 : 255, 
-                   var(--bg-main) == hsl(240, 14%, 2%) ? 13 : 255, 0.45);
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -306,8 +334,8 @@ input, textarea, select, button {
 .navbar.scrolled {
   top: 12px;
   width: 95%;
-  background: rgba(var(--bg-main) == hsl(240, 14%, 2%) ? 10 : 255, 0.8);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background: var(--navbar-bg-scrolled);
+  box-shadow: 0 10px 30px var(--navbar-shadow);
 }
 
 .nav-container {
@@ -461,7 +489,10 @@ input, textarea, select, button {
   padding-top: 100px;
   padding-bottom: 120px;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(var(--accent-gold-rgb), 0.05) 0%, transparent 50%), 
+    radial-gradient(circle at 20% 80%, rgba(var(--accent-neon-rgb), 0.04) 0%, transparent 50%), 
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-secondary) 100%);
 }
 
 .hero-canvas-bg {
@@ -496,10 +527,10 @@ input, textarea, select, button {
 
 .hero-title {
   font-family: var(--font-accent);
-  font-size: 4.8rem;
+  font-size: 5.2rem;
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.1rem;
+  line-height: 1.1;
+  letter-spacing: -0.12rem;
   margin-bottom: 18px;
   background: linear-gradient(135deg, var(--text-primary) 20%, var(--accent-gold) 100%);
   -webkit-background-clip: text;
@@ -508,19 +539,21 @@ input, textarea, select, button {
 
 .hero-subtitle {
   font-family: var(--font-title);
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02rem;
   color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 .hero-slogan {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1.08rem;
+  line-height: 1.85;
   color: var(--text-secondary);
   max-width: 580px;
   margin-bottom: 40px;
-  border-left: 2px solid var(--accent-neon);
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(to bottom, var(--accent-neon) 0%, var(--accent-gold) 100%) 1;
   padding-left: 20px;
 }
 
@@ -544,18 +577,18 @@ input, textarea, select, button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border var(--transition-fast), color var(--transition-fast);
 }
 
 .cta-btn.btn-primary {
   background: var(--accent-gold-gradient);
   color: hsl(240, 14%, 2%);
-  box-shadow: 0 8px 24px rgba(var(--accent-gold-rgb), 0.2);
+  box-shadow: 0 4px 20px rgba(var(--accent-gold-rgb), 0.15);
   gap: 10px;
 }
 .cta-btn.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(var(--accent-gold-rgb), 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(var(--accent-gold-rgb), 0.35);
 }
 
 .btn-arrow {
@@ -569,27 +602,31 @@ input, textarea, select, button {
 
 .cta-btn.btn-secondary {
   border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-primary);
 }
 .cta-btn.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--text-primary);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(var(--accent-neon-rgb), 0.45);
+  box-shadow: 0 0 20px rgba(var(--accent-neon-rgb), 0.15);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .cta-btn.btn-tertiary {
   border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-secondary);
 }
 .cta-btn.btn-tertiary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(var(--accent-gold-rgb), 0.45);
   color: var(--accent-gold);
-  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(var(--accent-gold-rgb), 0.15);
+  transform: translateY(-3px) scale(1.02);
 }
 
 /* Visual Column - Profile Frame inside Liquid Nebula Glass Bubble */
@@ -612,12 +649,11 @@ input, textarea, select, button {
 
 .profile-glow-ring-inner {
   position: absolute;
-  width: 103%;
-  height: 103%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.2);
-  box-shadow: inset 0 0 30px rgba(var(--accent-gold-rgb), 0.03), 0 0 40px var(--accent-gold-glow);
-  animation: slowPulseGlow 3.5s infinite alternate ease-in-out;
+  border: 1px solid rgba(var(--accent-gold-rgb), 0.1);
+  animation: slowPulseGlow 4s infinite alternate ease-in-out;
 }
 
 .profile-img-container {
@@ -626,8 +662,12 @@ input, textarea, select, button {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 5px solid var(--bg-elevated);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.65);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 8px; /* Elegant gap between photo and outer ring for float effect */
+  box-shadow: 0 15px 45px rgba(0,0,0,0.5);
   z-index: 3;
 }
 
@@ -635,12 +675,13 @@ input, textarea, select, button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05);
+  border-radius: 50%; /* Rounded directly inside glass border container */
+  transform: scale(1.02);
   transition: transform var(--transition-slow);
 }
 
 .profile-glow-ring:hover .profile-photo {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 /* Floating bubble accents for premium liquid style */
@@ -681,16 +722,16 @@ input, textarea, select, button {
 
 .profile-orbital-1 {
   position: absolute;
-  width: 122%; height: 122%;
+  width: 120%; height: 120%;
   border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.02); /* Made more subtle */
   animation: rotateOrbit 45s linear infinite;
 }
 .profile-orbital-2 {
   position: absolute;
-  width: 135%; height: 135%;
+  width: 132%; height: 132%;
   border-radius: 50%;
-  border: 1px solid rgba(var(--accent-neon-rgb), 0.04);
+  border: 1px solid rgba(var(--accent-neon-rgb), 0.02); /* Made more subtle */
   animation: rotateOrbitBack 65s linear infinite;
 }
 
@@ -703,8 +744,14 @@ input, textarea, select, button {
   100% { transform: rotate(0deg); }
 }
 @keyframes slowPulseGlow {
-  0% { box-shadow: 0 0 20px var(--accent-gold-glow), inset 0 0 10px rgba(var(--accent-gold-rgb), 0.05); }
-  100% { box-shadow: 0 0 50px rgba(var(--accent-gold-rgb), 0.55), inset 0 0 25px rgba(var(--accent-gold-rgb), 0.1); }
+  0% { 
+    box-shadow: 0 0 35px rgba(var(--accent-gold-rgb), 0.12), inset 0 0 15px rgba(var(--accent-gold-rgb), 0.02); 
+    border-color: rgba(var(--accent-gold-rgb), 0.12);
+  }
+  100% { 
+    box-shadow: 0 0 70px rgba(var(--accent-gold-rgb), 0.3), inset 0 0 30px rgba(var(--accent-gold-rgb), 0.04); 
+    border-color: rgba(var(--accent-gold-rgb), 0.25);
+  }
 }
 
 /* Mouse Scroll Indicator */
@@ -864,11 +911,12 @@ section {
 }
 
 .italic-serif-gold {
-  font-family: 'Playfair Display', Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
   color: var(--accent-gold);
-  text-shadow: 0 0 10px var(--accent-gold-glow);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px var(--accent-gold-glow);
 }
 
 .bio-badge-row {
@@ -1002,17 +1050,22 @@ section {
 }
 
 .stat-number {
-  font-family: var(--font-accent);
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
 .stat-label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 1199px) {
@@ -1333,7 +1386,7 @@ section {
   /* Make showcase CDs persistently visible and spin on mobile viewports */
   .cd-spinning-element {
     right: -20% !important;
-    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    transition: right var(--transition-slow) var(--ease-smooth);
     will-change: transform;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -2009,6 +2062,17 @@ section {
   transition: border-color var(--transition-fast);
 }
 
+/* Chrome/Safari Autofill Styles Override */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover, 
+.form-group input:-webkit-autofill:focus,
+.form-group textarea:-webkit-autofill,
+.form-group textarea:-webkit-autofill:hover,
+.form-group textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .form-group textarea { height: auto; resize: none; }
 
 .form-group label {
@@ -2020,25 +2084,84 @@ section {
   transition: transform var(--transition-medium), font-size var(--transition-medium), color var(--transition-medium);
 }
 
-.form-group select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+/* Custom Dropdown Styles */
+.custom-dropdown {
+  width: 100%;
+  height: 48px;
+  border-bottom: 2px solid var(--glass-border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
 }
+
+.dropdown-selected {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 30px;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  stroke: var(--accent-gold);
+  transition: transform var(--transition-medium);
+}
+[data-theme="light"] .dropdown-arrow { stroke: hsl(36, 88%, 42%); }
+
+.custom-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height var(--transition-medium), opacity var(--transition-medium);
+  z-index: 100;
+  box-shadow: 0 10px 30px var(--card-shadow);
+}
+
+.custom-dropdown.open .dropdown-options {
+  max-height: 250px;
+  opacity: 1;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background: rgba(240, 185, 60, 0.1);
+  color: var(--accent-gold);
+}
+
 .select-label { pointer-events: none; }
 
 /* Input float triggers */
 .form-group input:focus ~ label,
 .form-group input:not(:placeholder-shown) ~ label,
 .form-group textarea:focus ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
-  transform: translateY(-24px);
-  font-size: 0.78rem;
-  color: var(--accent-gold);
-}
-
-.form-group select:focus ~ .select-label,
-.form-group select:valid ~ .select-label {
+.form-group textarea:not(:placeholder-shown) ~ label,
+label.select-label.floated {
   transform: translateY(-24px);
   font-size: 0.78rem;
   color: var(--accent-gold);
@@ -2656,14 +2779,12 @@ section {
   }
   .teaser-cd-element {
     right: -18%;
-    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    transition: right var(--transition-slow) var(--ease-smooth); /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
     will-change: transform;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform: translate3d(0,0,0) rotate(0deg);
-    transform: translate3d(0,0,0) rotate(0deg);
     -webkit-animation: spin 12s linear infinite;
     animation: spin 12s linear infinite;
   }
@@ -2694,16 +2815,14 @@ section {
   /* Persistent CD sliding and spinning loop on mobile phones (no hover required) */
   .teaser-cd-element {
     right: -24% !important;
-    transition: right var(--transition-slow) var(--ease-smooth) !important; /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
+    transition: right var(--transition-slow) var(--ease-smooth); /* Exclude transform transition on mobile/tablet viewports to avoid animation freezes! */
     will-change: transform;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform: translate3d(0,0,0) rotate(0deg);
-    transform: translate3d(0,0,0) rotate(0deg);
-    -webkit-animation: spin 8s linear infinite !important;
-    animation: spin 8s linear infinite !important;
+    -webkit-animation: spin 8s linear infinite;
+    animation: spin 8s linear infinite;
   }
 }
 

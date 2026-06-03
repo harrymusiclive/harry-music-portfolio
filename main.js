@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     5. RESPONSIVE CANVAS WAVEFORM SIMULATOR
+     5. RESPONSIVE CANVAS MUSIC NOTES ANIMATION
      ========================================================================== */
   const canvas = document.getElementById('wavesCanvas');
   const ctx = canvas.getContext('2d');
@@ -167,71 +167,85 @@ document.addEventListener('DOMContentLoaded', () => {
     height = canvas.height = window.innerHeight;
   });
 
-  // Sinusoidal Wave configurations
-  let waveSpeed = 0.012;
-  let waveInc = 0;
-  
-  let targetAmplitude = 30;
-  let currentAmplitude = 30;
-  
-  // Track scroll speed dynamics
-  let lastScrollTop = 0;
-  let scrollSpeed = 0;
-  
-  window.addEventListener('scroll', () => {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    scrollSpeed = Math.min(Math.abs(st - lastScrollTop) * 0.9, 130);
-    lastScrollTop = st <= 0 ? 0 : st;
-  });
+  // Music Notes Configuration
+  const noteSymbols = ['♪', '♫', '♬', '♭', '♮'];
+  const notes = [];
+  const maxNotes = window.innerWidth > 768 ? 40 : 20;
 
-  function drawSinewave(y, frequency, amplitude, phase, color, lineWidth) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = lineWidth;
-    
-    for (let x = 0; x < width; x++) {
-      const offset = Math.sin(x * frequency + phase) * amplitude;
+  class MusicNote {
+    constructor() {
+      this.reset(true);
+    }
+
+    reset(initial = false) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * height : height + 50;
+      this.size = Math.random() * 24 + 12;
+      this.vx = (Math.random() - 0.5) * 1.5;
+      this.vy = -(Math.random() * 1.5 + 0.5);
+      this.opacity = Math.random() * 0.4 + 0.1;
+      this.symbol = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
+      this.rotation = Math.random() * Math.PI * 2;
+      this.dr = (Math.random() - 0.5) * 0.05;
+      this.colorIndex = Math.random();
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.rotation += this.dr;
       
-      // Curved mouse attraction mathematics
-      const mouseDist = Math.abs(mouseX - x);
-      const mouseInfluence = mouseDist < 300 ? (300 - mouseDist) / 300 : 0;
-      const mouseOffset = Math.sin((mouseY - y) * 0.004) * mouseInfluence * 22;
+      // Mouse interaction (repel slightly or attract? repel is usually cooler)
+      const dist = Math.hypot(mouseX - this.x, mouseY - this.y);
+      if (dist < 150) {
+        this.x -= (mouseX - this.x) * 0.03;
+        this.y -= (mouseY - this.y) * 0.03;
+      }
 
-      if (x === 0) {
-        ctx.moveTo(x, y + offset + mouseOffset);
-      } else {
-        ctx.lineTo(x, y + offset + mouseOffset);
+      if (this.y < -50 || this.x < -50 || this.x > width + 50) {
+        this.reset();
       }
     }
-    ctx.stroke();
+
+    draw(ctx, isDark) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      
+      let color;
+      if (isDark) {
+        color = this.colorIndex > 0.6 ? `rgba(255, 215, 0, ${this.opacity})` : 
+                this.colorIndex > 0.2 ? `rgba(200, 80, 255, ${this.opacity})` : `rgba(255, 255, 255, ${this.opacity * 0.5})`;
+      } else {
+        color = this.colorIndex > 0.6 ? `rgba(197, 160, 89, ${this.opacity})` : 
+                this.colorIndex > 0.2 ? `rgba(0, 122, 255, ${this.opacity})` : `rgba(0, 0, 0, ${this.opacity * 0.5})`;
+      }
+
+      ctx.fillStyle = color;
+      ctx.font = `${this.size}px 'Inter', sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(this.symbol, 0, 0);
+      ctx.restore();
+    }
   }
 
-  function renderWaves() {
+  for (let i = 0; i < maxNotes; i++) {
+    notes.push(new MusicNote());
+  }
+
+  function renderNotes() {
     ctx.clearRect(0, 0, width, height);
-
-    // Responsive spring-like amplitude change
-    targetAmplitude = 25 + scrollSpeed;
-    currentAmplitude += (targetAmplitude - currentAmplitude) * 0.08;
-    scrollSpeed *= 0.94; // Decay scroll acceleration
-
-    const phaseShift = waveInc;
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-    // Tailored light/dark colors
-    const colorGold = isDark ? 'rgba(255, 215, 0, 0.12)' : 'rgba(197, 160, 89, 0.16)';
-    const colorViolet = isDark ? 'rgba(200, 80, 255, 0.06)' : 'rgba(0, 122, 255, 0.06)';
-    const colorMuted = isDark ? 'rgba(255, 255, 255, 0.015)' : 'rgba(0, 0, 0, 0.02)';
+    notes.forEach(note => {
+      note.update();
+      note.draw(ctx, isDark);
+    });
 
-    // Render 4 layered wavy threads
-    drawSinewave(height * 0.44, 0.0018, currentAmplitude * 1.3, phaseShift, colorGold, 2.5);
-    drawSinewave(height * 0.49, 0.0028, currentAmplitude * 0.7, -phaseShift * 1.6, colorViolet, 1.5);
-    drawSinewave(height * 0.54, 0.0012, currentAmplitude * 1.6, phaseShift * 0.7, colorMuted, 3);
-    drawSinewave(height * 0.47, 0.0035, currentAmplitude * 0.4, phaseShift * 2.2, colorGold, 1);
-
-    waveInc += waveSpeed;
-    requestAnimationFrame(renderWaves);
+    requestAnimationFrame(renderNotes);
   }
-  renderWaves();
+  renderNotes();
 
   /* ==========================================================================
      6. NAVBAR RESIZING & BLUR
@@ -509,20 +523,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const preSaveBtn = document.getElementById('preSaveBtn');
   if (preSaveBtn) {
     preSaveBtn.addEventListener('click', () => {
-      // Elegant customized toast notification or dialog
-      const originalText = preSaveBtn.innerHTML;
+      // Instantly open the Smartlink URL in a new tab to bypass modern popup blockers
+      const preSaveUrl = "https://api.ffm.to/sl/e/ps/broken-saahil-nawaz?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xNDguMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxNDguMC4wLjAiLCJtYWpvciI6IjE0OCJ9LCJjcHUiOnsiYXJjaGl0ZWN0dXJlIjoiYW1kNjQifSwiZGV2aWNlIjp7fSwiZW5naW5lIjp7Im5hbWUiOiJCbGluayIsInZlcnNpb24iOiIxNDguMC4wLjAifSwib3MiOnsibmFtZSI6IldpbmRvd3MiLCJ2ZXJzaW9uIjoiMTAifX0sImNsaWVudCI6eyJyaWQiOiJhMWQ5NDI2YS00ZmQ0LTQzOWMtYjE3YS0yOWIwY2U0MTg1MmIiLCJzaWQiOiIzMmYyYjFjOS0zOTk4LTRlOTItODU4MC1kNGY3NDczMjRmYTMiLCJpcCI6IjIyMy4xOTAuODEuMjE2IiwicmVmIjoiIiwiaG9zdCI6ImRpdHRvLmZtIiwibGFuZyI6ImVuLVVTIiwiaXBDb3VudHJ5IjoiSU4ifSwiaXNXZWJwU3VwcG9ydGVkIjp0cnVlLCJnZHByRW5mb3JjZSI6ZmFsc2UsImNvdW50cnlDb2RlIjoiSU4iLCJpc0JvdCI6ZmFsc2UsInVzZUFmZiI6Im9yaWdpbiIsInZpZCI6Ijg1ODNmY2IwLWE5MDEtNGVmOS04MWEzLTRhZTVjMWZkOWU5NSIsImlkIjoiNmExZGFhNWQyYTAwMDA5OTAwNTE1MGFkIiwicHJ2IjpmYWxzZSwiaXNQcmVSIjp0cnVlLCJ0em8iOm51bGwsImNoIjpudWxsLCJhbiI6bnVsbCwiZGVzdFVybCI6Imh0dHBzOi8vYWNjb3VudHMuc3BvdGlmeS5jb20vYXV0aG9yaXplP2NsaWVudF9pZD02NmQzY2RiNDQ4MDc0YTBkODhlOWIwOGJhYWYyZjNkNyZyZXNwb25zZV90eXBlPWNvZGUmcmVkaXJlY3RfdXJpPWh0dHBzJTNBJTJGJTJGYXBpLmZmbS50byUyRndlYmhvb2slMkZzcG90aWZ5JTJGYXV0aG9yaXplJnNjb3BlPXVzZXItcmVhZC1wcml2YXRlJTIwdXNlci1yZWFkLWJpcnRoZGF0ZSUyMHVzZXItcmVhZC1lbWFpbCUyMHVzZXItbGlicmFyeS1tb2RpZnklMjB1c2VyLWxpYnJhcnktcmVhZCUyMHVzZXItcmVhZC1yZWNlbnRseS1wbGF5ZWQlMjB1c2VyLWZvbGxvdy1yZWFkJTIwdXNlci1mb2xsb3ctbW9kaWZ5JTIwdXNlci10b3AtcmVhZCUyMHBsYXlsaXN0LW1vZGlmeS1wdWJsaWMlMjBwbGF5bGlzdC1yZWFkLXByaXZhdGUlMjBwbGF5bGlzdC1tb2RpZnktcHJpdmF0ZSZzdGF0ZT1leUprWWt4cGJtdEpaQ0k2SWpaaE1XUmhZVFZrTW1Fd01EQXdPVGt3TURVeE5UQmhaQ0lzSW1GamRHbHZibFI1Y0dVaU9tNTFiR3dzSW1OMFlTSTZJbEJ5WlMxVFlYWmxJaXdpZFhObGNrTnZkVzUwY25raU9pSkpUaUlzSW5Ob2IzSjBTV1FpT2lKaWNtOXJaVzR0YzJGaGFHbHNMVzVoZDJGNklpd2laRzl0WVdsdUlqb2lhSFIwY0hNNkx5OWthWFIwYnk1bWJTSXNJbk5sY25acFkyVk9ZVzFsSWpvaWMzQnZkR2xtZVNJc0luQnliMlIxWTNRaU9pSnpiV0Z5ZEd4cGJtc2lMQ0p5WldScGNtVmpkRlZ5YVNJNkltaDBkSEJ6T2k4dlpHbDBkRzh1Wm0wdlluSnZhMlZ1TFhOaFlXaHBiQzF1WVhkaGVpOXdjbVZ6WVhabFkyRnNiR0poWTJzaUxDSm1ZV3hzWW1GamExVnliQ0k2Ym5Wc2JDd2lhWE5RY21WU1pXeGxZWE5sSWpwMGNuVmxMQ0pwYzBaMWRIVnlaVkpsYkdWaGMyVWlPblJ5ZFdVc0ltRnlkR2x6ZEVsa0lqb2lOamxtTW1Ka01qQXlZakF3TURBek5EQXdabVkzWTJaaElpd2lZWEowYVhOMFQzZHVaWElpT2lJMVl6VXdZalV4WkRFME1EQXdNREU1TURBMk9EWTRPVEVpTENKaFkzUnBiMjVKWkNJNmJuVnNiQ3dpWjJSd2NrVnVabTl5WTJVaU9tWmhiSE5sTENKc2FXNXJWSGx3WlNJNmJuVnNiQ3dpZFhObGNrbFFJam9pTWpJekxqRTVNQzQ0TVM0eU1UWWlMQ0p5WlhkaGNtUlZjMlZ5U1dRaU9tNTFiR3dzSW5KbFptVnljbUZzU1dRaU9tNTFiR3dzSW5WMWFXUWlPaUk0TlRnelptTmlNQzFoT1RBeExUUmxaamt0T0RGaE15MDBZV1UxWXpGbVpEbGxPVFVpZlEmMTAxMWxqd0VIIiwic3J2YyI6InNwb3RpZnkiLCJwcm9kdWN0Ijoic21hcnRsaW5rIiwic2hvcnRJZCI6ImJyb2tlbi1zYWFoaWwtbmF3YXoiLCJpc0F1dGhvcml6YXRpb25SZXF1aXJlZCI6dHJ1ZSwib3duZXIiOiI1YzUwYjUxZDE0MDAwMDE5MDA2ODY4OTEiLCJ0ZW5hbnQiOiI1ZDJjMjk2M2YwZDUxZWViZDI0ZTc3ODciLCJhciI6IjY5ZjJiZDIwMmIwMDAwMzQwMGZmN2NmYSIsImlzU2hvcnRMaW5rIjpmYWxzZSwibmF0aXZlIjpmYWxzZX0=";
+      window.open(preSaveUrl, "_blank");
+
+      // Dynamic animation and loading state indicators on button
       preSaveBtn.disabled = true;
       preSaveBtn.innerHTML = `
         <svg class="animate-spin" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" style="margin-right: 8px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)"></circle><path d="M4 12a8 8 0 0 1 8-8" stroke="currentColor"></path></svg>
-        <span>Syncing Waveforms...</span>
+        <span>Syncing Spotify...</span>
       `;
       
       setTimeout(() => {
         preSaveBtn.innerHTML = `
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          <span>Pre-Saved Successfully!</span>
+          <span>Pre-Saved on Spotify!</span>
         `;
-        alert("Frequency Synced! 'Broken' has been successfully pre-saved to your Spotify library and will release on June 5, 2026.");
       }, 1500);
     });
   }
