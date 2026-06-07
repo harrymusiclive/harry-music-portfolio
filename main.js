@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCursor();
 
   // Scale cursor aura on hovering link/button cards
-  const interactives = document.querySelectorAll('a, button, select, input, textarea, .genre-pill, .music-card-item');
+  const interactives = document.querySelectorAll('a, button, select, input, textarea, .genre-pill, .music-card-item, .sound-kit-album-wrapper');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('hovered');
@@ -636,6 +636,43 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateTeaserParticles);
     }
     animateTeaserParticles();
+  }
+
+  /* ==========================================================================
+     16. LATEST DROPS PROMO TOASTER POPUPS (BOTTOM RIGHT)
+     ========================================================================== */
+  const promoToastSong = document.getElementById('promoToastSong');
+  const promoToastKit = document.getElementById('promoToastKit');
+  const closeToastSong = document.getElementById('closeToastSong');
+  const closeToastKit = document.getElementById('closeToastKit');
+
+  if (promoToastSong && promoToastKit && closeToastSong && closeToastKit) {
+    const hasSeenPromoSong = sessionStorage.getItem('hasSeenPromoSong');
+    const hasSeenPromoKit = sessionStorage.getItem('hasSeenPromoKit');
+    
+    // Song Toast (triggers first at 1.5s)
+    if (!hasSeenPromoSong) {
+      setTimeout(() => {
+        promoToastSong.classList.add('active');
+      }, 1500);
+    }
+
+    // Kit Toast (triggers second at 2.5s)
+    if (!hasSeenPromoKit) {
+      setTimeout(() => {
+        promoToastKit.classList.add('active');
+      }, 2500);
+    }
+
+    closeToastSong.addEventListener('click', () => {
+      promoToastSong.classList.remove('active');
+      sessionStorage.setItem('hasSeenPromoSong', 'true');
+    });
+
+    closeToastKit.addEventListener('click', () => {
+      promoToastKit.classList.remove('active');
+      sessionStorage.setItem('hasSeenPromoKit', 'true');
+    });
   }
 
 });
