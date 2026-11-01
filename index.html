@@ -1,1281 +1,367 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Music | Multi-Genre Music Producer & Composer</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Official portfolio of Harry Music (Harishankar Tiwari), multi-genre music producer & composer from Bihar, India. Blending raw street sounds with classical soul. From trap beats to Bollywood scoring.">
-  <meta name="keywords" content="Harry Music, Harishankar Tiwari, Music Producer India, Bihar Composer, Beats Producer, Trap, Drill, Bollywood Music, Indian Classical, Mixing Mastering, Exclusive Beats">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090a0e">
+  <meta name="description" content="Harry Music (Harishankar Tiwari) is a multi-genre music producer and composer from Bihar, India. Listen to releases, shop beats and sound kits, or start a collaboration.">
   <meta name="author" content="Harry Music">
-  
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Harry Music | Premium Multi-Genre Music Producer">
-  <meta property="og:description" content="Crafting calm melody waves to hard bass drops. Discover premium music, exclusive beats, and cinematic soundscapes.">
+  <meta property="og:title" content="Harry Music — Producer & Composer">
+  <meta property="og:description" content="From calm melody waves to hard bass drops. Meet Harry Music, a multi-genre producer and composer from Bihar, India.">
   <meta property="og:image" content="./assets/harry_profile.jpg">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Harry Music | Music Producer & Composer">
-  <meta property="twitter:description" content="Multi-genre sound, one signature vibe. Blending raw energy with soulful classical traditions.">
-  <meta property="twitter:image" content="./assets/harry_profile.jpg">
-
-  <!-- Google Fonts -->
+  <title>Harry Music — Producer & Composer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="./style.css?v=1.2.7">
-  
-  <!-- FontAwesome for fallback simple UI elements -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Custom Cursor Elements -->
-  <div class="custom-cursor" id="customCursor"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Floating Promo Toaster Container (Bottom Right) -->
-  <div class="promo-toaster-container" id="promoToasterContainer">
-    <!-- Song promo card -->
-    <div class="promo-toast glass-card" id="promoToastSong">
-      <button class="promo-toast-close" id="closeToastSong" aria-label="Close song promo">&times;</button>
-      <div class="promo-toast-body">
-        <div class="promo-toast-img-wrapper">
-          <img src="./assets/broken_art.jpg" alt="Broken Cover Art" class="promo-toast-img">
-        </div>
-        <div class="promo-toast-details">
-          <span class="promo-toast-tag song-tag">NEW SINGLE</span>
-          <h4 class="promo-toast-title">Broken</h4>
-          <p class="promo-toast-artist">Saahil Nawaz & Harry</p>
-          <a href="https://open.spotify.com/track/6xksyC6QaXJELUSz82YyEf?si=8af3a441ac4c4174" target="_blank" rel="noopener noreferrer" class="promo-toast-btn btn-spotify">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-            <span>Listen</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Loop kit promo card -->
-    <div class="promo-toast glass-card" id="promoToastKit">
-      <button class="promo-toast-close" id="closeToastKit" aria-label="Close loop kit promo">&times;</button>
-      <div class="promo-toast-body">
-        <div class="promo-toast-img-wrapper">
-          <img src="./assets/mercy_art.jpg" alt="MERCY Loop Kit Cover Art" class="promo-toast-img">
-        </div>
-        <div class="promo-toast-details">
-          <span class="promo-toast-tag kit-tag">LATEST PACK</span>
-          <h4 class="promo-toast-title">MERCY Loop Kit</h4>
-          <p class="promo-toast-artist">Dark Trap loops</p>
-          <a href="https://beat22.com/sk-101841" target="_blank" rel="noopener noreferrer" class="promo-toast-btn btn-mercy">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            <span>Buy Pack — ₹500</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation Bar (Curved Glass Capsule) -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo-link" id="logoLink">
-        <div class="logo-img-wrapper">
-          <img src="./assets/harry_logo.png" alt="Harry Music Official Logo" class="nav-logo-img">
-        </div>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="brand" href="#home" aria-label="Harry Music home">
+        <span class="brand-logo"><img src="./assets/harry_logo.png" alt="Harry Music"></span>
+        <span class="brand-caption">Producer <i>+</i> composer</span>
       </a>
-      
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="#beat-store" class="nav-link">Buy My Beats</a></li>
-        <li class="nav-item"><a href="#sound-kits" class="nav-link">Sound Kits</a></li>
-        <li class="nav-item"><a href="#showcase" class="nav-link">Songs</a></li>
-        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <!-- Dark / Light Mode Toggle Button -->
-        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle visual theme">
-          <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav">
+        <span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#showcase">Music</a>
+        <a href="#platforms">Listen + connect</a>
+        <a href="#beat-store">Beats</a>
+        <a href="#sound-kits">Sound kits</a>
+        <a href="#services">Services</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
         </button>
-
-        <!-- Hamburguer mobile menu toggle button -->
-        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Toggle navigation menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-      </div>
+        <a class="nav-contact" href="#contact">Let’s work together <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Fullscreen Hero Section -->
-  <section class="hero-section" id="home">
-    <!-- Interactive Soundwaves Canvas -->
-    <canvas id="wavesCanvas" class="hero-canvas-bg"></canvas>
-    
-    <div class="hero-container">
-      <div class="hero-text-col" id="heroText">
-        <h2 class="hero-subtitle-top">MEET THE SOUNDSMITH</h2>
-        <h1 class="hero-title">Harry Music</h1>
-        <p class="hero-subtitle">Multi-Genre Music Producer &amp; Composer</p>
-        
-        <p class="hero-slogan">
-          “Crafting calm melody waves to hard bass drops. <br>
-          <span class="golden-accent">Multi-genre sound, one signature vibe.</span>”
-        </p>
-        
-        <div class="hero-cta-group">
-          <a href="#showcase" class="cta-btn btn-primary" id="ctaListen">
-            <span>Listen Now</span>
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#contact" class="cta-btn btn-secondary" id="ctaWork">Work With Me</a>
-          <a href="#genres" class="cta-btn btn-tertiary" id="ctaExplore">Explore My Music</a>
+  <main id="main">
+    <section class="hero section-wrap" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Independent producer · Bihar, India</p>
+        <h1 id="heroTitle">Music without <em>one lane.</em></h1>
+        <p class="hero-role">Harry Music <span>—</span> Multi-genre producer &amp; composer</p>
+        <p class="hero-description">Crafting calm melody waves to hard bass drops. Street energy, classical soul, and a sound that keeps moving.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#showcase">Listen to the music <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta">
+          <span>Trap</span><span>R&amp;B</span><span>Bollywood</span><span>Indian classical</span>
         </div>
       </div>
 
-      <div class="hero-visual-col" id="heroVisual">
-        <!-- Interactive Glowing Frame for Profile Pic in Immersive Bubble -->
-        <div class="profile-glow-ring">
-          <div class="profile-glow-ring-inner"></div>
-          <div class="profile-orbital-1"></div>
-          <div class="profile-orbital-2"></div>
-          <div class="profile-img-container">
-            <img src="./assets/harry_profile.jpg" alt="Harishankar Tiwari Portrait" class="profile-photo">
-          </div>
-          <div class="floating-bubble-accent bubble-1"></div>
-          <div class="floating-bubble-accent bubble-2"></div>
+      <figure class="hero-media">
+        <div class="hero-visualizer" id="heroVisualizer" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <img src="./assets/harry_profile.jpg" alt="Harishankar Tiwari, also known as Harry Music" fetchpriority="high">
+        </div>
+        <div class="hero-stamp" aria-hidden="true"><span>Sound</span><span>without borders</span><b>✳</b></div>
+      </figure>
+    </section>
+
+    <section class="genre-band" aria-label="Music genres">
+      <div class="genre-band-inner">
+        <div class="genre-band-group">
+          <span>One signature vibe</span><i>✳</i><span>Trap</span><i>✳</i><span>Drill</span><i>✳</i><span>R&amp;B</span><i>✳</i><span>Afro</span><i>✳</i><span>Reggae</span><i>✳</i><span>Bollywood</span><i>✳</i><span>Indian classical</span><i>✳</i><span>Lo-fi</span><i>✳</i><span>Cinematic</span>
+        </div>
+        <div class="genre-band-group" aria-hidden="true">
+          <span>One signature vibe</span><i>✳</i><span>Trap</span><i>✳</i><span>Drill</span><i>✳</i><span>R&amp;B</span><i>✳</i><span>Afro</span><i>✳</i><span>Reggae</span><i>✳</i><span>Bollywood</span><i>✳</i><span>Indian classical</span><i>✳</i><span>Lo-fi</span><i>✳</i><span>Cinematic</span>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Scroll Down Indicator -->
-    <div class="scroll-indicator">
-      <span class="scroll-text">SCROLL TO FREQUENCY</span>
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">THE CREATOR</span>
-        <h2 class="section-title">Who Is Harry Music?</h2>
-        <div class="section-divider"></div>
-      </div>
-      
-      <div class="about-content-grid">
-        <div class="about-bio-text">
-          <!-- Immersive Column Headline & Details Badges -->
-          <h3 class="bio-headline">The Sound Behind <span class="italic-serif-gold">Every Genre</span></h3>
-          
-          <div class="bio-badge-row">
-            <div class="bio-badge">
-              <span class="badge-icon">🎶</span>
-              <span>Harishankar Tiwari</span>
-            </div>
-            <div class="bio-badge">
-              <span class="badge-icon">📍</span>
-              <span>Bihar, India</span>
-            </div>
-            <div class="bio-badge">
-              <span class="badge-icon">🎛️</span>
-              <span>Producer & Composer</span>
-            </div>
-          </div>
-
-          <p class="reveal-text">
-            “I'm <span class="highlight-name">Harry Music</span> — real name <span class="highlight-real-name">Harishankar Tiwari</span>, a multi-genre music producer and composer from <span class="highlight-loc">Bihar, India</span>. I create music that breaks boundaries, blending the raw energy of street sounds with the soul of classical traditions.
-          </p>
-          <p class="reveal-text">
-            From hard-hitting <span class="highlight-genre">Trap</span> & <span class="highlight-genre">Drill</span> beats to smooth <span class="highlight-genre">R&B</span> vibes, from the rhythmic pulse of <span class="highlight-genre">Afro</span> & <span class="highlight-genre">Reggae</span> to the rich depth of <span class="highlight-genre">Indian Classical</span> and <span class="highlight-genre">Bollywood</span> compositions — my sound covers it all. I don't stick to one lane; I explore every frequency and emotion music has to offer.
-          </p>
-          <p class="reveal-text">
-            Whether you're an upcoming artist searching for your signature sound, or a creative looking for a versatile musical collaborator — I'm here to bring your vision to life, from the studio to the stage.”
-          </p>
-          
-          <div class="about-signature-wrapper">
-            <div class="signature-line"></div>
-            <div class="signature-text-details">
-              <span class="signature-name">Harishankar Tiwari</span>
-              <span class="signature-role">Founder, Producer, Composer</span>
-            </div>
-          </div>
+    <section class="about section-wrap section-pad" id="about">
+      <div class="section-kicker"><span>01</span> The creator</div>
+      <div class="about-layout">
+        <div>
+          <h2 class="display-heading">One ear in the streets.<br>One in the <em>classics.</em></h2>
         </div>
-        
-        <!-- Stats Section embedded inside About for fluid layout -->
-        <div class="about-stats-grid" id="statsGrid">
-          <div class="stat-card glass-card">
-            <div class="stat-card-glow"></div>
-            <div class="stat-icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3 class="stat-number" data-target="50" data-append="+">0</h3>
-            <p class="stat-label">Artists Worked With</p>
-          </div>
-          
-          <div class="stat-card glass-card">
-            <div class="stat-card-glow"></div>
-            <div class="stat-icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-            </div>
-            <h3 class="stat-number" data-target="2000" data-append="+">0</h3>
-            <p class="stat-label">Beats Produced</p>
-          </div>
-          
-          <div class="stat-card glass-card">
-            <div class="stat-card-glow"></div>
-            <div class="stat-icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <h3 class="stat-number" data-target="6" data-append="+">0</h3>
-            <p class="stat-label">Years Experience</p>
-          </div>
-          
-          <div class="stat-card glass-card">
-            <div class="stat-card-glow"></div>
-            <div class="stat-icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </div>
-            <h3 class="stat-number text-target" data-target="10">0</h3>
-            <p class="stat-label">Expertise Genres</p>
-          </div>
+        <div class="about-copy">
+          <p class="lead-copy">I’m Harry Music — real name Harishankar Tiwari, a producer and composer from Bihar, India.</p>
+          <p>I create music that breaks boundaries, blending the raw energy of street sounds with the soul of classical traditions. From hard-hitting Trap and Drill to smooth R&amp;B, Afro and Reggae, Bollywood and Indian classical: I follow the feeling, not one lane.</p>
+          <a class="text-link" href="#contact">A little about working together <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Genre Section -->
-  <section class="genre-section" id="genres">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">GENRES I PRODUCE</span>
-        <h2 class="section-title">Signature Genres</h2>
-        <div class="section-divider"></div>
+      <div class="stats-row" aria-label="Experience">
+        <div class="stat"><strong><span class="stat-value" data-count="50">50</span><span class="stat-suffix">+</span></strong><span>Artists worked with</span></div>
+        <div class="stat"><strong><span class="stat-value" data-count="2000" data-format="compact">2k</span><span class="stat-suffix">+</span></strong><span>Beats produced</span></div>
+        <div class="stat"><strong><span class="stat-value" data-count="6">6</span><span class="stat-suffix">+</span></strong><span>Years experience</span></div>
+        <div class="stat"><strong><span class="stat-value" data-count="10">10</span></strong><span>Genres explored</span></div>
       </div>
+    </section>
 
-      <div class="genre-ticker-container" id="genreTicker">
-        <div class="genre-ticker-track">
-          <!-- Slide Set 1 -->
-          <div class="genre-pill glass-card" style="--accent: #ff4a5a;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Trap</span>
+    <section class="music-section section-pad" id="showcase">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker"><span>02</span> Selected work</div>
+            <h2 class="display-heading">Songs <em>produced.</em></h2>
           </div>
-          <div class="genre-pill glass-card" style="--accent: #2ac7ff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Drill</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffd700;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">R&B</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ff9100;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Afro</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #00ff73;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Reggae</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #df58ff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Bollywood</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffbf00;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Indian Classical</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #a0a0a0;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Hip Hop</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #b19ffb;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Lo-Fi</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffffff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Cinematic</span>
-          </div>
+          <p class="section-intro">A few stops across the sound. Find a release, press play, and stay awhile.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter releases">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All releases</button>
+          <button class="filter-button" type="button" data-filter="trap" aria-pressed="false">Trap &amp; Drill</button>
+          <button class="filter-button" type="button" data-filter="rnb" aria-pressed="false">R&amp;B &amp; Lo-fi</button>
+          <button class="filter-button" type="button" data-filter="bollywood" aria-pressed="false">Bollywood &amp; Pop</button>
+          <button class="filter-button" type="button" data-filter="classical" aria-pressed="false">Classical</button>
+        </div>
 
-          <!-- Slide Set 2 (Exact Duplicate) -->
-          <div class="genre-pill glass-card" style="--accent: #ff4a5a;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Trap</span>
+        <div class="release-grid" id="releaseGrid">
+          <article class="release-card" data-genres="rnb bollywood">
+            <a class="cover-link" href="https://open.spotify.com/track/6xksyC6QaXJELUSz82YyEf?si=8af3a441ac4c4174" target="_blank" rel="noopener noreferrer" aria-label="Listen to Broken on Spotify"><img src="./assets/broken_art.jpg" alt="Broken single artwork by Saahil Nawaz"></a>
+            <div class="release-details"><span class="release-genre">R&amp;B / Pop</span><h3>Broken</h3><p>Saahil Nawaz &amp; Harry Music</p><a href="https://open.spotify.com/track/6xksyC6QaXJELUSz82YyEf?si=8af3a441ac4c4174" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="rnb">
+            <a class="cover-link" href="https://open.spotify.com/track/1QhUnpkZKPGfVC06CIBXmF?si=293e75b78a5b4e77" target="_blank" rel="noopener noreferrer" aria-label="Listen to Khwaab on Spotify"><img src="./assets/khwaab_art.jpg" alt="Khwaab single artwork"></a>
+            <div class="release-details"><span class="release-genre">R&amp;B / Soul</span><h3>Khwaab</h3><p>Saahil Nawaz &amp; Harry Music</p><a href="https://open.spotify.com/track/1QhUnpkZKPGfVC06CIBXmF?si=293e75b78a5b4e77" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="bollywood">
+            <a class="cover-link" href="https://open.spotify.com/track/0oqJYCWZQLgGZsu638HknK?si=7da6e7b0eeab4c4e" target="_blank" rel="noopener noreferrer" aria-label="Listen to Main Janta Hun on Spotify"><img src="./assets/main_janta_hun_art.jpg" alt="Original artwork for Main Janta Hun"></a>
+            <div class="release-details"><span class="release-genre">Bollywood / Pop</span><h3>Main Janta Hun</h3><p>Harry Music</p><a href="https://open.spotify.com/track/0oqJYCWZQLgGZsu638HknK?si=7da6e7b0eeab4c4e" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="rnb">
+            <a class="cover-link" href="https://open.spotify.com/track/6mbsWbU9Th4nMeWBtBfDXO?si=5a6ba409a0ff48ed" target="_blank" rel="noopener noreferrer" aria-label="Listen to Ishq Reverb on Spotify"><img src="./assets/ishq_art.jpg" alt="Ishq Reverb single artwork"></a>
+            <div class="release-details"><span class="release-genre">Lo-fi / Slowed</span><h3>Ishq Reverb</h3><p>Harry Music</p><a href="https://open.spotify.com/track/6mbsWbU9Th4nMeWBtBfDXO?si=5a6ba409a0ff48ed" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="classical">
+            <a class="cover-link" href="https://open.spotify.com/track/06mC4Eu4GxJRE1oiQGbamo?si=0a5520df45f74d7f" target="_blank" rel="noopener noreferrer" aria-label="Listen to Siya on Spotify"><img src="./assets/siya_art.jpg" alt="Siya single artwork"></a>
+            <div class="release-details"><span class="release-genre">Indian classical</span><h3>Siya</h3><p>Harry Music</p><a href="https://open.spotify.com/track/06mC4Eu4GxJRE1oiQGbamo?si=0a5520df45f74d7f" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="bollywood">
+            <a class="cover-link" href="https://open.spotify.com/track/4Xc87rgv5zlBfeglwQWoNA?si=52bdd27fbf3540e3" target="_blank" rel="noopener noreferrer" aria-label="Listen to Chahat on Spotify"><img src="./assets/chahat_art.jpg" alt="Chahat single artwork"></a>
+            <div class="release-details"><span class="release-genre">Bollywood / Pop</span><h3>Chahat</h3><p>Harry Music</p><a href="https://open.spotify.com/track/4Xc87rgv5zlBfeglwQWoNA?si=52bdd27fbf3540e3" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="trap">
+            <a class="cover-link" href="https://open.spotify.com/track/0euBTw6tE6L1JDevZ3032a?si=39aa6010af5040a2" target="_blank" rel="noopener noreferrer" aria-label="Listen to Arrived on Spotify"><img src="./assets/arrived_art.png" alt="Arrived single artwork"></a>
+            <div class="release-details"><span class="release-genre">Trap / Hip Hop</span><h3>Arrived</h3><p>Harry Music</p><a href="https://open.spotify.com/track/0euBTw6tE6L1JDevZ3032a?si=39aa6010af5040a2" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="trap">
+            <a class="cover-link" href="https://open.spotify.com/track/4jp5x6js1iK4sp29CVeMvg?si=b058693a604f472a" target="_blank" rel="noopener noreferrer" aria-label="Listen to Next on Spotify"><img src="./assets/next_art.jpg" alt="Next single artwork"></a>
+            <div class="release-details"><span class="release-genre">Drill / Trap</span><h3>Next</h3><p>Harry Music</p><a href="https://open.spotify.com/track/4jp5x6js1iK4sp29CVeMvg?si=b058693a604f472a" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="release-card" data-genres="trap rnb">
+            <a class="cover-link" href="https://open.spotify.com/track/2LkmyKV9rkEmiEk1I6DbxB?si=fae891024d174765" target="_blank" rel="noopener noreferrer" aria-label="Listen to Sazaa on Spotify"><img src="./assets/sazaa_art.jpg" alt="Sazaa single artwork"></a>
+            <div class="release-details"><span class="release-genre">Trap / R&amp;B</span><h3>Sazaa</h3><p>Harry Music</p><a href="https://open.spotify.com/track/2LkmyKV9rkEmiEk1I6DbxB?si=fae891024d174765" target="_blank" rel="noopener noreferrer" class="release-link">Listen <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+        <p class="filter-status" id="filterStatus" aria-live="polite"></p>
+        <div class="spotify-band">
+          <div class="spotify-heading">
+            <img src="./assets/spotify.png" alt="Spotify" width="48" height="48">
+            <div><span class="spotify-label">More from Harry Music</span><strong>Follow the sound on Spotify</strong><a href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl?si=IfHKJcrARfepNyHaJYShWA" target="_blank" rel="noopener noreferrer">Open artist profile ↗</a></div>
           </div>
-          <div class="genre-pill glass-card" style="--accent: #2ac7ff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Drill</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffd700;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">R&B</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ff9100;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Afro</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #00ff73;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Reggae</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #df58ff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Bollywood</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffbf00;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Indian Classical</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #a0a0a0;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Hip Hop</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #b19ffb;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Lo-Fi</span>
-          </div>
-          <div class="genre-pill glass-card" style="--accent: #ffffff;">
-            <div class="genre-pill-dot"></div>
-            <span class="genre-pill-name">Cinematic</span>
-          </div>
+          <iframe title="Harry Music on Spotify" src="https://open.spotify.com/embed/artist/3XHFjXKbsbZNBedOIqRVQl?utm_source=generator&amp;theme=0" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Upcoming Release Teaser Section -->
-  <section class="teaser-section" id="upcoming-release">
-    <canvas id="teaserCanvas" class="teaser-canvas-bg"></canvas>
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent animate-pulse-slow">LATEST FREQUENCY</span>
-        <h2 class="section-title">Latest Worldwide Release</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="teaser-card glass-card">
-        <div class="teaser-glow-accent"></div>
-        <div class="teaser-grid">
-          <div class="teaser-text-col">
-            <span class="teaser-meta">SAAHIL NAWAZ & HARRY MUSIC</span>
-            <h3 class="teaser-song-title">Broken</h3>
-            
-            <p class="teaser-desc">
-              Written and composed by Saahil Nawaz, with music produced by Harry Music. An atmospheric, heartbroken R&B and Pop record delivering a deep, sad vibe. Built on delicate acoustic guitar lines and emotional piano keys, it captures the sound of a shattered heart healing.
-            </p>
-
-            <div class="release-date-badge">
-              <span class="release-icon">🚀</span>
-              <span class="release-text">Streaming Worldwide Now</span>
-            </div>
-
-            <div class="teaser-cta-group">
-              <a href="https://open.spotify.com/track/6xksyC6QaXJELUSz82YyEf?si=8af3a441ac4c4174" target="_blank" rel="noopener noreferrer" class="cta-btn btn-primary animate-pulse-slow" id="streamBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                <span>Listen on Spotify</span>
-              </a>
-            </div>
+    <section class="platforms-section section-pad" id="platforms" aria-labelledby="platformsTitle">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker"><span>03</span> Keep the sound close</div>
+            <h2 class="display-heading" id="platformsTitle">Listen <em>&amp; connect.</em></h2>
           </div>
-
-          <div class="teaser-visual-col">
-            <div class="teaser-frame-wrapper">
-              <div class="teaser-neon-ring"></div>
-              <div class="teaser-album-wrapper" id="teaserAlbumCard">
-                <img src="./assets/broken_art.jpg" alt="Broken Album Art" class="teaser-cover-art">
-                <!-- Spinning CD Element sliding out on hover -->
-                <div class="teaser-cd-element">
-                  <img src="./assets/broken_art.jpg" alt="Broken CD Label" class="teaser-cd-label">
-                  <div class="teaser-cd-center-hole"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Songs Produced / Music Showcase Section -->
-  <section class="showcase-section" id="showcase">
-    <div class="section-container">
-      <div class="section-header space-between">
-        <div class="header-text">
-          <span class="section-tag golden-accent">STREAMING VAULT</span>
-          <h2 class="section-title">Songs Produced</h2>
-        </div>
-        
-        <!-- Genre Filtering Controls -->
-        <div class="showcase-filters" id="showcaseFilters">
-          <button class="filter-btn active" data-filter="all">All Releases</button>
-          <button class="filter-btn" data-filter="trap">Trap & Drill</button>
-          <button class="filter-btn" data-filter="rnb">R&B & Lo-Fi</button>
-          <button class="filter-btn" data-filter="bollywood">Bollywood & Pop</button>
-          <button class="filter-btn" data-filter="classical">Classical & Cinematic</button>
-        </div>
-      </div>
-
-      <!-- Music Showcase Grid -->
-      <div class="music-showcase-grid" id="musicShowcaseGrid">
-        <!-- Song 1: Broken -->
-        <div class="music-card-item glass-card" data-genres="rnb bollywood" style="--song-accent: #ff4a5a;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/broken_art.jpg" alt="Broken Album Art" class="album-cover">
-              <!-- Spinning CD Element on Hover -->
-              <div class="cd-spinning-element">
-                <img src="./assets/broken_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">R&B / Pop</span>
-              <h3 class="music-title">Broken</h3>
-              <p class="music-artist">Saahil Nawaz & Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/6xksyC6QaXJELUSz82YyEf?si=8af3a441ac4c4174" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
+          <p class="section-intro">Find Harry Music on the streaming services and social pages listed below.</p>
         </div>
 
-        <!-- Song 2: Khwaab -->
-        <div class="music-card-item glass-card" data-genres="rnb" style="--song-accent: #3b5bdb;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/khwaab_art.jpg" alt="Khwaab Album Art" class="album-cover">
-              <!-- Spinning CD Element on Hover -->
-              <div class="cd-spinning-element">
-                <img src="./assets/khwaab_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">R&B / Soul</span>
-              <h3 class="music-title">Khwaab</h3>
-              <p class="music-artist">Saahil Nawaz & Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/1QhUnpkZKPGfVC06CIBXmF?si=293e75b78a5b4e77" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 2: Main Janta Hun (With newly uploaded custom astronaut art!) -->
-        <div class="music-card-item glass-card" data-genres="bollywood" style="--song-accent: #ff00a0;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/main_janta_hun_art.jpg" alt="Main Janta Hun Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/main_janta_hun_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Bollywood / Pop</span>
-              <h3 class="music-title">Main Janta Hun</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/0oqJYCWZQLgGZsu638HknK?si=7da6e7b0eeab4c4e" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 3: Ishq -->
-        <div class="music-card-item glass-card" data-genres="rnb" style="--song-accent: #ff4a5a;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/ishq_art.jpg" alt="Ishq Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/ishq_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Lo-Fi / Slowed</span>
-              <h3 class="music-title">Ishq <span class="badge">Reverb</span></h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/6mbsWbU9Th4nMeWBtBfDXO?si=5a6ba409a0ff48ed" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 4: Siya -->
-        <div class="music-card-item glass-card" data-genres="classical" style="--song-accent: #00ff73;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/siya_art.jpg" alt="Siya Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/siya_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Indian Classical</span>
-              <h3 class="music-title">Siya</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/06mC4Eu4GxJRE1oiQGbamo?si=0a5520df45f74d7f" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 5: Chahat -->
-        <div class="music-card-item glass-card" data-genres="bollywood" style="--song-accent: #2ac7ff;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/chahat_art.jpg" alt="Chahat Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/chahat_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Bollywood / Pop</span>
-              <h3 class="music-title">Chahat</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/4Xc87rgv5zlBfeglwQWoNA?si=52bdd27fbf3540e3" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 6: Arrived -->
-        <div class="music-card-item glass-card" data-genres="trap" style="--song-accent: #a0a0a0;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/arrived_art.png" alt="Arrived Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/arrived_art.png" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Trap / Hip Hop</span>
-              <h3 class="music-title">Arrived</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/0euBTw6tE6L1JDevZ3032a?si=39aa6010af5040a2" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 7: Next -->
-        <div class="music-card-item glass-card" data-genres="trap" style="--song-accent: #b19ffb;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/next_art.jpg" alt="Next Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/next_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Drill / Trap</span>
-              <h3 class="music-title">Next</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/4jp5x6js1iK4sp29CVeMvg?si=b058693a604f472a" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Song 8: Sazaa -->
-        <div class="music-card-item glass-card" data-genres="trap rnb" style="--song-accent: #df58ff;">
-          <div class="music-card-glow"></div>
-          <div class="music-card-body">
-            <div class="album-cover-wrapper">
-              <img src="./assets/sazaa_art.jpg" alt="Sazaa Album Art" class="album-cover">
-              <div class="cd-spinning-element">
-                <img src="./assets/sazaa_art.jpg" alt="CD label" class="cd-label">
-                <div class="cd-center-hole"></div>
-              </div>
-            </div>
-            
-            <div class="music-card-details">
-              <span class="music-genre-tag">Trap / R&B</span>
-              <h3 class="music-title">Sazaa</h3>
-              <p class="music-artist">Harry Music</p>
-              
-              <a href="https://open.spotify.com/track/2LkmyKV9rkEmiEk1I6DbxB?si=fae891024d174765" target="_blank" rel="noopener noreferrer" class="music-listen-btn">
-                <span>Listen Now</span>
-                <span class="music-btn-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spotify Artist Profile Embed Section -->
-  <section class="spotify-section" id="spotify-embed">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">LIVE INTERACTIVE PLAYER</span>
-        <h2 class="section-title">Official Spotify Artist Profile</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="spotify-embed-card glass-card">
-        <div class="spotify-neon-shadow"></div>
-        <div class="spotify-header">
-          <div class="spotify-brand">
-            <img src="./assets/spotify.png" alt="Spotify Official Icon" class="spotify-brand-logo">
-            <div class="spotify-text-details">
-              <span class="spotify-top">VERIFIED ARTIST</span>
-              <span class="spotify-bottom">Harry Music</span>
-            </div>
-          </div>
-          
-          <a href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl?si=IfHKJcrARfepNyHaJYShWA" target="_blank" rel="noopener noreferrer" class="spotify-follow-btn">FOLLOW ON SPOTIFY</a>
-        </div>
-        
-        <div class="spotify-iframe-container">
-          <!-- Spotify embed iframe -->
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/3XHFjXKbsbZNBedOIqRVQl?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Beat Store Section -->
-  <section class="beat-store-section" id="beat-store">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">PREMIUM INSTRUMENTALS</span>
-        <h2 class="section-title">Buy My Beats</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="beat-store-card glass-card">
-        <div class="beat-store-glow"></div>
-        <div class="beat-store-grid-layout">
-          <div class="beat-store-logo-wrapper">
-            <div class="logo-orbit-ring"></div>
-            <div class="logo-orbit-ring-inner"></div>
-            <div class="logo-img-container-beatstore">
-              <img src="./assets/beat22.jpg" alt="Beat22 Official Logo" class="beat-store-official-logo">
-            </div>
-          </div>
-          <div class="beat-store-text-wrapper">
-            <h3 class="beat-store-headline">My Official Beatstore on Beat22</h3>
-            <p class="beat-store-desc">
-              Looking for professional, high-end instrumentals or custom sound design libraries? Explore my official verified storefront on <strong class="golden-accent">Beat22</strong>. From hard-hitting Trap & Drill arrangements to classical fusions and organic R&B, all beats are fully structured, high-quality, and ready for instant commercial distribution.
-            </p>
-            <div class="beat-store-features">
-              <div class="feature-item">
-                <span class="feature-icon">⚡</span>
-                <span class="feature-label">Instant High-Quality WAV/Stem Downloads</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon">📜</span>
-                <span class="feature-label">Flexible & Secure Licensing Agreements</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon">🎹</span>
-                <span class="feature-label">100% Royalty-Free Pro Sample & Sound Kits</span>
-              </div>
-            </div>
-            <a href="https://beat22.com/@harrymusic" target="_blank" rel="noopener noreferrer" class="beat-store-btn">
-              <span>Explore Beat Store</span>
-              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="platform-group">
+          <h3 class="platform-group-title"><span>01</span> Stream the music</h3>
+          <div class="platform-grid streaming-grid">
+            <a class="platform-card platform-spotify" href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on Spotify">
+              <span class="platform-logo"><img src="./assets/spotify.png" alt="" loading="lazy"></span><span class="platform-card-copy"><strong>Spotify</strong><small>Singles, albums &amp; more</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
             </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sound Kits Section -->
-  <section class="sound-kits-section" id="sound-kits">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">PRODUCER RESOURCES</span>
-        <h2 class="section-title">Sound Kits</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="sound-kit-card glass-card">
-        <div class="sound-kit-glow"></div>
-        <div class="sound-kit-grid-layout">
-          <div class="sound-kit-visual-col">
-            <div class="sound-kit-frame-wrapper">
-              <div class="sound-kit-neon-ring"></div>
-              <div class="sound-kit-album-wrapper" id="soundKitAlbumCard">
-                <img src="./assets/mercy_art.jpg" alt="MERCY Sound Pack Cover Art" class="sound-kit-cover-art">
-                <!-- Spinning CD Element sliding out on hover -->
-                <div class="sound-kit-cd-element">
-                  <img src="./assets/mercy_art.jpg" alt="MERCY CD Label" class="sound-kit-cd-label">
-                  <div class="sound-kit-cd-center-hole"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sound-kit-text-wrapper">
-            <span class="sound-kit-meta">LATEST SAMPLE PACK</span>
-            <h3 class="sound-kit-headline">MERCY — Dark Melody Collection</h3>
-            <p class="sound-kit-desc">
-              Unleash dark, heavy, and aggressive hard trap loops. This premium loop kit features hard-hitting melody loops designed for heavy trap, dark fusions, and aggressive hip-hop production. Crafted carefully with vintage analog gear, dark synth fusions, and haunting soundscapes.
-            </p>
-            <div class="sound-kit-features">
-              <div class="feature-item">
-                <span class="feature-icon">🎹</span>
-                <span class="feature-label">Dark Trap Melodies & Premium Loop Files</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon">🔥</span>
-                <span class="feature-label">Hard, Aggressive & Haunting Vibe</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon">🔑</span>
-                <span class="feature-label">100% Royalty-Free Loops (Key & BPM Labeled)</span>
-              </div>
-            </div>
-            
-            <div class="sound-kit-pricing-row">
-              <span class="sound-kit-price">₹500 <span class="original-price">₹1,499</span></span>
-              <a href="https://beat22.com/sk-101841" target="_blank" rel="noopener noreferrer" class="sound-kit-buy-btn">
-                <span>Buy Now</span>
-                <svg class="btn-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services-section" id="services">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">COLLABORATION MENU</span>
-        <h2 class="section-title">Production Services</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="services-grid">
-        <!-- Service 1: Exclusive Beats -->
-        <div class="service-card glass-card">
-          <div class="service-pulse-glow"></div>
-          <div class="service-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-          </div>
-          <h3 class="service-title">Exclusive Beats</h3>
-          <p class="service-desc">Fully licensed, unique instrumentals customized to your signature brand. Ready for commercial placement and distribution.</p>
-        </div>
-
-        <!-- Service 2: Custom Music Production -->
-        <div class="service-card glass-card">
-          <div class="service-pulse-glow"></div>
-          <div class="service-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-          </div>
-          <h3 class="service-title">Custom Production</h3>
-          <p class="service-desc">Full-scale co-writing and track arrangement. We'll refine your lyrics, song structure, and construct high-end bespoke sound beds.</p>
-        </div>
-
-        <!-- Service 3: Mixing & Mastering -->
-        <div class="service-card glass-card">
-          <div class="service-pulse-glow"></div>
-          <div class="service-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
-          </div>
-          <h3 class="service-title">Mixing & Mastering</h3>
-          <p class="service-desc">Pristine radio-ready sound quality. Deep stereo imaging, meticulous dynamic leveling, and maximum loudness optimization.</p>
-        </div>
-
-        <!-- Service 4: Background Music -->
-        <div class="service-card glass-card">
-          <div class="service-pulse-glow"></div>
-          <div class="service-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v-1.07zM17.9 13.9c-.38-.08-.76-.15-1.12-.15-.84 0-1.54.46-1.9 1.14l-1.38 2.6c-.36.68-.36 1.48 0 2.16l.24.46c-2.54-.53-4.57-2.39-5.26-4.88l3.14-3.14c.2-.2.3-.47.3-.76V9.5c0-.55-.45-1-1-1h-2V7.12C10.74 7.04 11.36 7 12 7c3.95 0 7 3.05 7 7 0 .31-.02.62-.06.93l-.84-1.03z"/></svg>
-          </div>
-          <h3 class="service-title">Background Music</h3>
-          <p class="service-desc">Premium royalty-free, immersive audio themes for corporate videos, commercials, video games, and creative content creators.</p>
-        </div>
-
-        <!-- Service 5: Artist Collaboration -->
-        <div class="service-card glass-card">
-          <div class="service-pulse-glow"></div>
-          <div class="service-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          </div>
-          <h3 class="service-title">Artist Collaboration</h3>
-          <p class="service-desc">Strategic creative partnerships. From writing camps to live studio recordings. Let's merge styles to create legendary records.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section (Saahil Nawaz and Shubhv only!) -->
-  <section class="testimonial-section">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">THOUGHTS</span>
-        <h2 class="section-title">What Artists Say</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="testimonials-slider-container">
-        <div class="testimonials-wrapper" id="testimonialsWrapper">
-          <!-- Slide 1 -->
-          <div class="testimonial-card glass-card active">
-            <div class="quote-icon">“</div>
-            <p class="testimonial-quote">"Harry doesn't just make beats; he constructs emotions. Working on 'Khwaab' was an absolute masterclass in music production. He took a simple melody idea and turned it into an elegant, cinematic R&B masterpiece. His multi-genre expertise is unmatched."</p>
-            <div class="testimonial-user">
-              <div class="user-avatar-placeholder">SN</div>
-              <div class="user-details">
-                <span class="user-name">Saahil Nawaz</span>
-                <span class="user-role">Collaborating Artist</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="testimonial-card glass-card">
-            <div class="quote-icon">“</div>
-            <p class="testimonial-quote">"Harry is an absolute visionary. Blending classical soundscapes with highly futuristic electronic spaces is incredibly challenging, yet he makes it look effortless. He is the ultimate versatile collaborator who pushes sound beyond boundaries."</p>
-            <div class="testimonial-user">
-              <div class="user-avatar-placeholder">SV</div>
-              <div class="user-details">
-                <span class="user-name">Shubhv</span>
-                <span class="user-role">Singer & Composer</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slider Dots Navigation -->
-        <div class="slider-dots" id="sliderDots">
-          <span class="dot active" data-slide="0"></span>
-          <span class="dot" data-slide="1"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Streaming & Socials Section (Without SoundCloud and BeatStars!) -->
-  <section class="streaming-socials-section" id="socials">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">CONNECT EVERYWHERE</span>
-        <h2 class="section-title">Streaming & Socials</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <!-- Platforms Logo Grid -->
-      <div class="socials-logo-grid">
-        <!-- Spotify -->
-        <a href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl?si=IfHKJcrARfepNyHaJYShWA" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #1db954;" aria-label="Spotify Artist Profile">
-          <div class="social-logo-glow"></div>
-          <img src="./assets/spotify.png" alt="Spotify" class="platform-logo-img">
-          <span class="platform-name">Spotify</span>
-        </a>
-
-        <!-- Apple Music -->
-        <a href="https://music.apple.com/in/artist/harry-music/1481222045" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #fc3c44;" aria-label="Apple Music Profile">
-          <div class="social-logo-glow"></div>
-          <img src="./assets/applemusic.png" alt="Apple Music" class="platform-logo-img">
-          <span class="platform-name">Apple Music</span>
-        </a>
-
-        <!-- YouTube Music -->
-        <a href="https://music.youtube.com/channel/UCBlD1cGkZwcQn7amYF1rUgA?si=9Wq9oMQekYnzJ1RE" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #ff0000;" aria-label="YouTube Music Channel">
-          <div class="social-logo-glow"></div>
-          <img src="./assets/ytmusic.png" alt="YouTube Music" class="platform-logo-img">
-          <span class="platform-name">YouTube Music</span>
-        </a>
-
-        <!-- Amazon Music -->
-        <a href="https://music.amazon.in/artists/B011X6IIRQ/harry-music?marketplaceId=A21TJRUUN4KGV&musicTerritory=IN&ref=dm_sh_JIcfA6epp1LLyH2SxfSCyMPv9" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #00a8e1;" aria-label="Amazon Music Profile">
-          <div class="social-logo-glow"></div>
-          <img src="./assets/amazonmusic.png" alt="Amazon Music" class="platform-logo-img amazon-logo-mod">
-          <span class="platform-name">Amazon Music</span>
-        </a>
-
-        <!-- YouTube (General) -->
-        <a href="https://www.youtube.com/@HarryMusic" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #ff0000;" aria-label="YouTube Channel">
-          <div class="social-logo-glow"></div>
-          <!-- SVG YouTube Vector Icon -->
-          <svg class="platform-logo-svg" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          <span class="platform-name">YouTube</span>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #e1306c;" aria-label="Instagram Profile">
-          <div class="social-logo-glow"></div>
-          <svg class="platform-logo-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-          <span class="platform-name">Instagram</span>
-        </a>
-
-        <!-- X / Twitter -->
-        <a href="https://www.x.com/@iharrymusic" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" aria-label="X Twitter Profile">
-          <div class="social-logo-glow"></div>
-          <svg class="platform-logo-svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          <span class="platform-name">X / Twitter</span>
-        </a>
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/profile.php?id=100091686397840" target="_blank" rel="noopener noreferrer" class="social-logo-card glass-card" style="--social-accent: #1877f2;" aria-label="Facebook Profile">
-          <div class="social-logo-glow"></div>
-          <svg class="platform-logo-svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          <span class="platform-name">Facebook</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cinematic Contact Section (Without WhatsApp!) -->
-  <section class="contact-section" id="contact">
-    <div class="section-container">
-      <div class="section-header center">
-        <span class="section-tag golden-accent">STUDIO BOOKING</span>
-        <h2 class="section-title">Work With Me</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Direct Quick Connect Buttons -->
-        <div class="contact-channels-card glass-card">
-          <div class="contact-channels-glow"></div>
-          <h3 class="channels-title">Secure Your Frequency</h3>
-          <p class="channels-desc">Have a project, sync placement, or beat inquiry? Connect directly via your preferred channel for instant studio bookings.</p>
-          
-          <div class="channels-buttons-list">
-            <!-- Instagram DM -->
-            <a href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer" class="channel-btn instagram-btn">
-              <span class="channel-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-              </span>
-              <span>Instagram DM</span>
+            <a class="platform-card platform-apple" href="https://music.apple.com/in/artist/harry-music/1481222045" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on Apple Music">
+              <span class="platform-logo"><img src="./assets/applemusic.png" alt="" loading="lazy"></span><span class="platform-card-copy"><strong>Apple Music</strong><small>Listen in lossless audio</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
             </a>
-
-            <!-- Direct Email -->
-            <a href="mailto:harishankartiwari@gmail.com?subject=Harry%20Music%20Collaboration%20Inquiry" class="channel-btn email-btn">
-              <span class="channel-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-              </span>
-              <span>Email Booking</span>
+            <a class="platform-card platform-ytmusic" href="https://music.youtube.com/channel/UCBlD1cGkZwcQn7amYF1rUgA?si=9Wq9oMQekYnzJ1RE" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on YouTube Music">
+              <span class="platform-logo"><img src="./assets/ytmusic.png" alt="" loading="lazy"></span><span class="platform-card-copy"><strong>YouTube Music</strong><small>Stream the full catalog</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="platform-card platform-amazon" href="https://music.amazon.in/artists/B011X6IIRQ/harry-music?marketplaceId=A21TJRUUN4KGV&amp;musicTerritory=IN&amp;ref=dm_sh_JIcfA6epp1LLyH2SxfSCyMPv9" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on Amazon Music">
+              <span class="platform-logo"><img src="./assets/amazonmusic.png" alt="" loading="lazy"></span><span class="platform-card-copy"><strong>Amazon Music</strong><small>Play Harry Music</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
 
-        <!-- Interactive Contact Form — powered by Formspree -->
-        <form class="contact-form glass-card" id="contactForm"
-              action="https://formspree.io/f/xgobwdwj"
-              method="POST">
+        <div class="platform-group social-group">
+          <h3 class="platform-group-title"><span>02</span> Follow along</h3>
+          <div class="platform-grid social-grid">
+            <a class="platform-card social-card social-youtube" href="https://www.youtube.com/@HarryMusic" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on YouTube">
+              <span class="platform-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></span><span class="platform-card-copy"><strong>YouTube</strong><small>Music videos &amp; more</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="platform-card social-card social-instagram" href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on Instagram">
+              <span class="platform-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.8" r=".8"/></svg></span><span class="platform-card-copy"><strong>Instagram</strong><small>New music &amp; daily life</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="platform-card social-card social-x" href="https://www.x.com/@iharrymusic" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on X">
+              <span class="platform-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 1.2h3.7l-8.1 9.2L24 22.9h-7.4l-5.8-7.6-6.6 7.6H.5l8.6-9.8L0 1.2h7.6l5.2 6.9 6.1-6.9Zm-1.3 19.5h2.1L6.5 3.2H4.3l13.3 17.5Z"/></svg></span><span class="platform-card-copy"><strong>X</strong><small>Studio news &amp; updates</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="platform-card social-card social-facebook" href="https://www.facebook.com/profile.php?id=100091686397840" target="_blank" rel="noopener noreferrer" aria-label="Harry Music on Facebook">
+              <span class="platform-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5H15c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 12 2Z"/></svg></span><span class="platform-card-copy"><strong>Facebook</strong><small>News &amp; community</small></span><span class="platform-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Formspree honeypot spam filter -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <section class="shop-section section-pad">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker"><span>04</span> In the studio</div>
+            <h2 class="display-heading">Made to move <em>you.</em></h2>
+          </div>
+          <p class="section-intro">Instrumentals and sounds for artists, producers, and the next idea waiting to happen.</p>
+        </div>
+        <div class="shop-grid">
+          <article class="shop-card beat-card" id="beat-store">
+            <div class="shop-copy">
+              <span class="shop-label">The beat store</span>
+              <h3>Find your<br><em>next sound.</em></h3>
+              <p>Explore original Trap, Drill, R&amp;B and cinematic instrumentals. Flexible licenses, instant WAV and stem downloads.</p>
+              <a class="button button-light" href="https://beat22.com/@harrymusic" target="_blank" rel="noopener noreferrer">Explore Beat22 <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="beat22-logo"><img src="./assets/beat22.jpg" alt="Beat22"></div>
+            <span class="shop-index">01</span>
+          </article>
+          <article class="shop-card kit-card" id="sound-kits">
+            <img class="kit-cover" src="./assets/mercy_art.jpg" alt="MERCY — Dark Melody Collection cover">
+            <div class="shop-copy">
+              <span class="shop-label">Latest sample pack</span>
+              <h3>MERCY <em>— dark melody collection</em></h3>
+              <p>Hard, haunting trap loops with keys and BPM labeled. Royalty-free and ready for your next record.</p>
+              <div class="kit-price"><strong>₹500</strong><del>₹1,499</del></div>
+              <a class="button button-dark" href="https://beat22.com/sk-101841" target="_blank" rel="noopener noreferrer">Get the loop kit <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="services-section section-pad" id="services">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+          <div class="section-kicker"><span>05</span> Collaboration menu</div>
+            <h2 class="display-heading">Let’s make it <em>real.</em></h2>
+          </div>
+          <p class="section-intro">From a first sketch to the final master, bring the idea and we’ll shape the sound around it.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><span>01 / Production</span><h3>Exclusive beats</h3><p>Original instrumentals, tailored to your voice and cleared for commercial release.</p></article>
+          <article class="service-card"><span>02 / Arrangement</span><h3>Custom production</h3><p>Co-writing, track arrangement and full-scale production built around your vision.</p></article>
+          <article class="service-card"><span>03 / Finishing</span><h3>Mixing &amp; mastering</h3><p>Clear, balanced mixes with depth, detail and a confident final level.</p></article>
+          <article class="service-card"><span>04 / Picture</span><h3>Background music</h3><p>Distinctive royalty-free sound for films, games, ads and digital projects.</p></article>
+          <article class="service-card"><span>05 / Together</span><h3>Artist collaboration</h3><p>A creative partner for writing sessions, studio recordings and new directions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="voices-section section-pad">
+      <div class="section-wrap voices-layout">
+        <div>
+          <div class="section-kicker"><span>06</span> Kind words</div>
+          <h2 class="display-heading">Made <em>together.</em></h2>
+          <p class="section-intro">Good music begins with trust, curiosity, and a shared feeling.</p>
+        </div>
+        <div class="quotes">
+          <blockquote>
+            <span class="quote-mark">“</span>
+            <p>Harry doesn’t just make beats; he constructs emotions. Working on “Khwaab” was an absolute masterclass in music production. He took a simple melody idea and turned it into an elegant, cinematic R&amp;B masterpiece. His multi-genre expertise is unmatched.</p>
+            <footer><strong>Saahil Nawaz</strong><span>Collaborating artist</span></footer>
+          </blockquote>
+          <blockquote>
+            <span class="quote-mark">“</span>
+            <p>Harry is an absolute visionary. Blending classical soundscapes with futuristic electronic spaces is incredibly challenging, yet he makes it look effortless. He is the ultimate versatile collaborator who pushes sound beyond boundaries.</p>
+            <footer><strong>Shubhv</strong><span>Singer &amp; composer</span></footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section section-pad" id="contact">
+      <div class="section-wrap contact-layout">
+        <div class="contact-copy">
+          <div class="section-kicker"><span>07</span> Studio booking</div>
+          <h2 class="display-heading">Your idea.<br><em>Our next record.</em></h2>
+          <p>Have a project, sync placement or beat inquiry? Tell me what you’re working on and let’s make something with feeling.</p>
+          <div class="contact-links">
+            <a href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer">Instagram DM <span aria-hidden="true">↗</span></a>
+            <a href="mailto:harishankartiwari@gmail.com?subject=Harry%20Music%20Collaboration%20Inquiry">Email Harry <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgobwdwj" method="POST">
+          <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
-            <div class="form-group">
-              <input type="text" id="nameInput" name="name" required placeholder=" " autocomplete="name" data-fs-field>
-              <label for="nameInput">Your Name / Stage Name</label>
-              <div class="input-focus-line"></div>
-            </div>
-
-            <div class="form-group">
-              <input type="email" id="emailInput" name="email" required placeholder=" " autocomplete="email" data-fs-field>
-              <label for="emailInput">Email Address</label>
-              <div class="input-focus-line"></div>
-            </div>
+            <label>Name or artist name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
+            <label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
           </div>
-
-          <div class="form-group custom-dropdown-group">
-            <input type="hidden" id="serviceInput" name="service" required>
-            <div class="custom-dropdown" id="customDropdown">
-              <div class="dropdown-selected" id="dropdownSelected"></div>
-              <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              <div class="dropdown-options" id="dropdownOptions">
-                <div class="dropdown-item" data-value="Buy Exclusive Beats">Buy Exclusive Beats</div>
-                <div class="dropdown-item" data-value="Custom Track Production">Custom Track Production</div>
-                <div class="dropdown-item" data-value="Mixing & Mastering">Mixing &amp; Mastering</div>
-                <div class="dropdown-item" data-value="Artist Collaboration">Artist Collaboration</div>
-              </div>
-            </div>
-            <label id="dropdownLabel" class="select-label">Select Requested Service</label>
-            <div class="input-focus-line" id="dropdownFocusLine"></div>
-          </div>
-
-          <div class="form-group text-area-group">
-            <textarea id="messageInput" name="message" required rows="4" placeholder=" " data-fs-field></textarea>
-            <label for="messageInput">Tell me about your sonic vision...</label>
-            <div class="input-focus-line"></div>
-          </div>
-
-          <!-- Success / Error feedback messages -->
-          <div id="formSuccess" data-fs-success style="display:none; padding:14px 18px; border-radius:12px; background:rgba(30,200,100,0.12); border:1px solid rgba(30,200,100,0.3); color:#3ecf8e; font-size:0.9rem; margin-bottom:4px;">
-            ✅ Submitted successfully! Harry will be in touch soon.
-          </div>
-          <div id="formError" data-fs-error style="display:none; padding:14px 18px; border-radius:12px; background:rgba(255,80,80,0.10); border:1px solid rgba(255,80,80,0.25); color:#ff6b6b; font-size:0.9rem; margin-bottom:4px;">
-            ❌ Something went wrong. Please try again or email directly.
-          </div>
-
-          <button type="submit" class="submit-btn" id="submitBtn" data-fs-submit-btn>
-            <span id="submitBtnText">Send Project Signal</span>
-            <svg class="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-          </button>
+          <label>What are you looking for?
+            <select name="service" required>
+              <option value="" selected disabled>Choose a service</option>
+              <option>Buy Exclusive Beats</option>
+              <option>Custom Track Production</option>
+              <option>Mixing &amp; Mastering</option>
+              <option>Background Music</option>
+              <option>Artist Collaboration</option>
+            </select>
+          </label>
+          <label>Tell me about your project<textarea name="message" rows="4" placeholder="A few details about the sound you have in mind…" required></textarea></label>
+          <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+          <button class="button button-dark submit-button" type="submit">Send project inquiry <span aria-hidden="true">↗</span></button>
+          <p class="form-note">Your details are sent securely through Formspree.</p>
         </form>
-
-        <script>
-          (function() {
-            const form = document.getElementById('contactForm');
-            const btn  = document.getElementById('submitBtn');
-            const btnText = document.getElementById('submitBtnText');
-            const successMsg = document.getElementById('formSuccess');
-            const errorMsg   = document.getElementById('formError');
-
-            // Custom Dropdown Logic
-            const customDropdown = document.getElementById('customDropdown');
-            const dropdownSelected = document.getElementById('dropdownSelected');
-            const dropdownOptions = document.getElementById('dropdownOptions');
-            const dropdownItems = document.querySelectorAll('.dropdown-item');
-            const serviceInput = document.getElementById('serviceInput');
-            const dropdownLabel = document.getElementById('dropdownLabel');
-            const dropdownFocusLine = document.getElementById('dropdownFocusLine');
-
-            if (customDropdown) {
-              customDropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
-                customDropdown.classList.toggle('open');
-                dropdownFocusLine.style.width = customDropdown.classList.contains('open') ? '100%' : '0%';
-              });
-
-              dropdownItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                  e.stopPropagation();
-                  const value = this.getAttribute('data-value');
-                  dropdownSelected.textContent = value;
-                  serviceInput.value = value;
-                  customDropdown.classList.remove('open');
-                  customDropdown.classList.add('has-value');
-                  dropdownLabel.classList.add('floated');
-                  dropdownFocusLine.style.width = '0%';
-                });
-              });
-
-              document.addEventListener('click', function() {
-                if (customDropdown.classList.contains('open')) {
-                  customDropdown.classList.remove('open');
-                  dropdownFocusLine.style.width = '0%';
-                }
-              });
-            }
-
-            if (!form || !btn || !btnText) return;
-
-            form.addEventListener('submit', function(e) {
-              e.preventDefault();
-              
-              if (successMsg) successMsg.style.display = 'none';
-              if (errorMsg) errorMsg.style.display = 'none';
-
-              // Set button loading state
-              btn.disabled = true;
-              btnText.textContent = 'Sending...';
-
-              try {
-                const data = new FormData(form);
-                
-                // Perform the Formspree POST call asynchronously
-                fetch(form.action, {
-                  method: 'POST',
-                  body: data,
-                  headers: { 'Accept': 'application/json' }
-                });
-
-                // Provide instant successful UI response to the user
-                if (successMsg) {
-                  successMsg.style.display = 'block';
-                  successMsg.textContent = '✅ submitted succesfully';
-                }
-                form.reset();
-                if (customDropdown) {
-                  dropdownSelected.textContent = '';
-                  customDropdown.classList.remove('has-value');
-                  dropdownLabel.classList.remove('floated');
-                }
-                btnText.textContent = 'submitted succesfully';
-                
-                setTimeout(() => {
-                  btn.disabled = false;
-                  btnText.textContent = 'Send Project Signal';
-                  if (successMsg) successMsg.style.display = 'none';
-                }, 4000);
-
-              } catch (err) {
-                // Fail-safe fallback to successful state so client testing is never blocked
-                if (successMsg) {
-                  successMsg.style.display = 'block';
-                  successMsg.textContent = '✅ submitted succesfully';
-                }
-                form.reset();
-                if (customDropdown) {
-                  dropdownSelected.textContent = '';
-                  customDropdown.classList.remove('has-value');
-                  dropdownLabel.classList.remove('floated');
-                }
-                btnText.textContent = 'submitted succesfully';
-                
-                setTimeout(() => {
-                  btn.disabled = false;
-                  btnText.textContent = 'Send Project Signal';
-                  if (successMsg) successMsg.style.display = 'none';
-                }, 4000);
-              }
-            });
-          })();
-        </script>
-       </div>
-     </div>
-   </section>
-
-  <!-- Elegant Footer -->
-  <footer class="footer">
-    <!-- Waveform line simulator -->
-    <div class="footer-divider-wave">
-      <svg viewBox="0 0 1200 40" preserveAspectRatio="none" class="clean-wave-svg">
-        <path d="M0,20 Q150,20 300,20 Q400,20 450,20 T500,20 T520,20 T540,5 T560,35 T580,5 T600,35 T620,20 T670,20 Q800,20 950,20 T1200,20" fill="none" stroke="url(#wave-gradient)" stroke-width="2"/>
-        <defs>
-          <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(255, 215, 0, 0.03)"/>
-            <stop offset="40%" stop-color="var(--accent-gold)"/>
-            <stop offset="50%" stop-color="var(--accent-neon)"/>
-            <stop offset="60%" stop-color="var(--accent-gold)"/>
-            <stop offset="100%" stop-color="rgba(200, 80, 255, 0.03)"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-
-    <div class="footer-container">
-      <div class="footer-brand-col">
-        <img src="./assets/harry_logo.png" alt="Harry Music Footer Logo" class="footer-logo-img">
-        <p class="footer-brand-desc">Crafting calm melody waves to hard bass drops. Multi-genre sound, one signature vibe.</p>
       </div>
+    </section>
+  </main>
 
-      <div class="footer-links-col">
-        <h4 class="footer-col-title">NAVIGATION</h4>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#beat-store">Buy My Beats</a></li>
-          <li><a href="#sound-kits">Sound Kits</a></li>
-          <li><a href="#showcase">Music Vault</a></li>
-          <li><a href="#services">Collab Menu</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-socials-col">
-        <h4 class="footer-col-title">SONIC CHANNELS</h4>
-        <div class="footer-socials-row">
-          <!-- Spotify -->
-          <a href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl" target="_blank" rel="noopener noreferrer" style="--social-accent: #1db954;" aria-label="Spotify Profile"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4c-.18.27-.53.37-.8.19-2.2-1.35-4.99-1.66-8.26-.91-.3.07-.61-.12-.68-.42-.07-.3.12-.61.42-.68 3.58-.82 6.66-.47 9.13 1.05.28.17.37.52.19.8zm1.22-2.73c-.22.36-.69.48-1.05.25-2.52-1.55-6.37-2-9.35-1.1-.4.12-.82-.1-.95-.5-.13-.4.1-.82.5-.95 3.42-1.04 7.65-.54 10.55 1.25.36.22.48.69.25 1.05zm.1-2.82C14.47 8.78 8.8 8.6 5.51 9.59c-.5.15-1.02-.13-1.17-.63-.15-.5.13-1.02.63-1.17 3.77-1.14 10-0.93 14.07 1.49.45.27.6.85.33 1.3-.27.45-.85.6-1.3.33z"/></svg></a>
-          <!-- YouTube -->
-          <a href="https://www.youtube.com/@HarryMusic" target="_blank" rel="noopener noreferrer" style="--social-accent: #ff0000;" aria-label="YouTube Channel"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer" style="--social-accent: #e1306c;" aria-label="Instagram Profile"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
-          <!-- Email -->
-          <a href="mailto:harishankartiwari@gmail.com" style="--social-accent: var(--accent-gold);" aria-label="Email Address"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
-        </div>
+  <footer class="site-footer">
+    <div class="section-wrap footer-main">
+      <a class="brand footer-brand" href="#home" aria-label="Harry Music home"><span class="brand-logo"><img src="./assets/harry_logo.png" alt="Harry Music"></span><span class="brand-caption">Producer <i>+</i> composer</span></a>
+      <p>Crafting calm melody waves to hard bass drops.<br>Multi-genre sound, one signature vibe.</p>
+      <div class="footer-socials" aria-label="Streaming and social profiles">
+        <a href="https://open.spotify.com/artist/3XHFjXKbsbZNBedOIqRVQl" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a href="https://music.apple.com/in/artist/harry-music/1481222045" target="_blank" rel="noopener noreferrer">Apple Music</a>
+        <a href="https://music.youtube.com/channel/UCBlD1cGkZwcQn7amYF1rUgA?si=9Wq9oMQekYnzJ1RE" target="_blank" rel="noopener noreferrer">YouTube Music</a>
+        <a href="https://music.amazon.in/artists/B011X6IIRQ/harry-music?marketplaceId=A21TJRUUN4KGV&amp;musicTerritory=IN&amp;ref=dm_sh_JIcfA6epp1LLyH2SxfSCyMPv9" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+        <a href="https://www.youtube.com/@HarryMusic" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.instagram.com/iharrymusic" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.x.com/@iharrymusic" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.facebook.com/profile.php?id=100091686397840" target="_blank" rel="noopener noreferrer">Facebook</a>
       </div>
     </div>
-
-    <div class="footer-copyright-bar">
-      <p>&copy; 2026 Harry Music — All Rights Reserved. Blending street sounds with classical traditions.</p>
-    </div>
+    <div class="section-wrap footer-bottom"><span>© 2026 Harry Music</span><a href="#top">Back to top ↑</a><span>Bihar, India</span></div>
   </footer>
 
-  <!-- Loaded Libraries via High-Speed CDN -->
-  <!-- GSAP Core -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <!-- GSAP ScrollTrigger Plugin -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <!-- Main Application Logic Script -->
-  <script src="./main.js?v=1.2.7"></script>
+  <div class="notice-stack" aria-live="polite" aria-atomic="false">
+    <aside class="notice-toast diwali-notice" id="diwaliNotice" role="status" aria-hidden="true" hidden>
+      <div class="diwali-topline">
+        <span class="diwali-brand"><img src="./assets/beat22.jpg" alt="" aria-hidden="true"><span><i aria-hidden="true">✺</i> Beat22 · Diwali special</span></span>
+        <button class="notice-close" type="button" aria-label="Dismiss Diwali Beat22 offer notification"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <div class="diwali-content">
+        <span class="diwali-kicker">A little more light for your next record</span>
+        <div class="diwali-offer"><strong>40<span>%</span></strong><span>OFF<br>ALL BEATS</span></div>
+        <p>Make your next beat<br><em>feel like a festival.</em></p>
+        <span class="diwali-detail">Celebrate Diwali with 40% off all beats in the Harry Music Beat22 store.</span>
+        <a class="diwali-cta" href="https://beat22.com/@harrymusic" target="_blank" rel="noopener noreferrer">Shop all beats <span aria-hidden="true">↗</span></a>
+      </div>
+      <span class="diwali-spark diwali-spark-one" aria-hidden="true">✦</span>
+      <span class="diwali-spark diwali-spark-two" aria-hidden="true">✧</span>
+      <span class="notice-progress" aria-hidden="true"></span>
+    </aside>
+  </div>
+
+  <script src="./main.js"></script>
 </body>
 </html>
